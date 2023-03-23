@@ -17,7 +17,14 @@ To set up and run the application locally, follow these steps:
 
 When contributing to this project, please follow the [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) and create a separate branch for each feature or bugfix. After the changes are made, create a pull request for review.
 
-Please make sure to replace `https://github.com/your-username/delivery-app.git` with the actual URL of your repository.
+Please make sure to replace `https://github.com/your-username/delivery-app.git`
+with the actual URL of your repository.
+
+## Libraries used for the project
+
+1. React-route-dom 6: for app routes.
+2. Bootstrap 5.2.3: for our team to avoid unnecessary markup work.
+3. Axios: for all app requests.
 
 ## License
 

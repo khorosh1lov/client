@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { API_BASE_URL } from '../config';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,7 +11,7 @@ const Restaurants = () => {
 		const fetchRestaurants = async () => {
 			try {
 				// It is Your Local Express Server for Now
-				const response = await axios.get('http://localhost:2200/restaurants');
+				const response = await axios.get(`${API_BASE_URL}/restaurants`);
 				setRestaurants(response.data);
 			} catch (error) {
 				console.error('Error fetching restaurants:', error);

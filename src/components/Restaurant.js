@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { API_BASE_URL } from '../config';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -10,7 +11,7 @@ const Restaurant = () => {
 	useEffect(() => {
 		const fetchRestaurant = async () => {
 			try {
-				const response = await axios.get(`http://localhost:2200/restaurants/${id}`); // замените match.params.id на id
+				const response = await axios.get(`${API_BASE_URL}/restaurants/${id}`); // замените match.params.id на id
 				setRestaurant(response.data);
 			} catch (error) {
 				console.error('Error fetching restaurant:', error);

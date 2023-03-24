@@ -10,7 +10,7 @@ function App() {
 			<main className="container">
 				<div className="bg-light p-5 rounded">
 					<Link className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none" to="/">
-						<h1 class="fs-1">Delivery app - Front</h1>
+						<h1 className="fs-1">Delivery app - Front</h1>
 					</Link>
 
 					<hr></hr>

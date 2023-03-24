@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Restaurants = () => {
@@ -25,7 +26,9 @@ const Restaurants = () => {
 			{restaurants.map((restaurant) => (
 				<div key={restaurant._id} className="card">
 					<div className="card-body">
-						<h4 className="card-title">{restaurant.name}</h4>
+						<Link to={`/restaurants/${restaurant._id}`} className="card-title">
+							<h4>{restaurant.name}</h4>
+						</Link>
 						<p className="card-text">
 							<span>Cuisine: </span>
 							{restaurant.cuisine} <br />

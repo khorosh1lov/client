@@ -1,6 +1,7 @@
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import React from 'react';
+import Restaurant from './components/Restaurant';
 import Restaurants from './components/Restaurants';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 
 				<Routes>
 					<Route path="/restaurants" element={<Restaurants />} />
+					<Route path="/restaurants/:id" element={<Restaurant />} />
 				</Routes>
 			</main>
 		</Router>

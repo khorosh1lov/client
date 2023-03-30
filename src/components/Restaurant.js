@@ -11,7 +11,7 @@ const Restaurant = () => {
 	useEffect(() => {
 		const fetchRestaurant = async () => {
 			try {
-				const response = await axios.get(`${API_BASE_URL}/restaurants/${id}`); // замените match.params.id на id
+				const response = await axios.get(`${API_BASE_URL}/${id}`); // замените match.params.id на id
 				setRestaurant(response.data);
 			} catch (error) {
 				console.error('Error fetching restaurant:', error);

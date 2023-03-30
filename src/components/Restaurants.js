@@ -11,7 +11,7 @@ const Restaurants = () => {
 		const fetchRestaurants = async () => {
 			try {
 				// It is Your Local Express Server for Now
-				const response = await axios.get(`${API_BASE_URL}/restaurants`);
+				const response = await axios.get(`${API_BASE_URL}`);
 				setRestaurants(response.data);
 			} catch (error) {
 				console.error('Error fetching restaurants:', error);
@@ -27,7 +27,7 @@ const Restaurants = () => {
 			{restaurants.map((restaurant) => (
 				<div key={restaurant._id} className="card">
 					<div className="card-body">
-						<Link to={`/restaurants/${restaurant._id}`} className="card-title">
+						<Link to={`${restaurant._id}`} className="card-title">
 							<h4>{restaurant.name}</h4>
 						</Link>
 						<p className="card-text">

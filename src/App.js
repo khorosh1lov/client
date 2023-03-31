@@ -7,39 +7,6 @@ import SignUpRoute from "./routes/SignUpRoute";
 import SignInRoute from "./routes/SignInRoute";
 import UserMenuRoute from "./routes/UserMenuRoute";
 import Header from "./components/Header";
-/*
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootRoute from "./routes/RootRoute";
-// import Restaurant from "./components/Restaurant";
-// import Restaurants from "./components/Restaurants";
-
-import NotFoundRoute from "./routes/NotFoundRoute";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootRoute />,
-    children: [
-      {
-        path: "signup",
-        element: <SignUpRoute />,
-      },
-      {
-        path: "login",
-        element: <SignInRoute />,
-      },
-      {
-        path: "usermenu",
-        element: <UserMenuRoute />,
-      },
-      {
-        path: "*",
-        element: <NotFoundRoute />,
-      },
-    ],
-  },
-]);*/
 
 function App() {
   return (

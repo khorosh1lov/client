@@ -3,12 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
 import Input from "../forms/Input";
+import LoginWithThirdParty from "../forms/LogInWithThirdParty";
 import axios from "axios";
 import { useState } from "react";
-
-/* import LoginWithThirdParty from "../forms/LogInWithThirdParty"; */
-
-
 
 function SignInForm() {
   const navigate = useNavigate();
@@ -109,7 +106,7 @@ function SignInForm() {
           Log In
         </button>
 
-        {/* <LoginWithThirdParty /> */} 
+        <LoginWithThirdParty /> 
 
         <div className="col-md-8">
           <p className="text-muted">

@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
+
 import Input from "../forms/Input";
-import LoginWithThirdParty from "../forms/LogInWithThirdParty";
+import axios from "axios";
+import { useState } from "react";
+
+/* import LoginWithThirdParty from "../forms/LogInWithThirdParty";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
-import ErrorPasswordLength from "../forms/ErrorPasswordLength";
+import ErrorPasswordLength from "../forms/ErrorPasswordLength"; */
 
 function SignInForm() {
   const navigate = useNavigate();
@@ -75,7 +77,7 @@ function SignInForm() {
             setEmail({ ...email, isTouched: true });
           }}
         />
-        <ErrorRequiredMessage label="Email" value={email} />
+        {/* <ErrorRequiredMessage label="Email" value={email} /> */}
 
         <Input
           label="Password"
@@ -95,7 +97,7 @@ function SignInForm() {
             Must be at leat 8 characters long.
           </span>
         </div>
-        <ErrorPasswordLength password={password} />
+        {/* <ErrorPasswordLength password={password} /> */}
 
         <button
           type="submit"
@@ -105,7 +107,7 @@ function SignInForm() {
           Log In
         </button>
 
-        <LoginWithThirdParty />
+        {/* <LoginWithThirdParty /> */}
 
         <div className="col-md-8">
           <p className="text-muted">

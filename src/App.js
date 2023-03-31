@@ -10,7 +10,7 @@ import Restaurants from "./components/Restaurants";
 import SignInRoute from "./routes/SignInRoute";
 import UserMenuRoute from "./routes/UserMenuRoute";
 
-//import SignUpRoute from "./routes/SignUpRoute";
+/* import SignUpRoute from "./routes/SignUpRoute"; */
 
 
 //import AddDish from './components/Admin/AddDish';

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { API_BASE_URL } from '../config';
+import StarRating from './StarRating';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -27,52 +28,72 @@ const Restaurant = () => {
 
 	return (
 		<div>
-			<h1 className="mt-4 mb-4">{restaurant.name}</h1>
-			<img src={restaurant.headerImage} alt={`${restaurant.name} header`} className="img-fluid mb-3" />
-			<div className="card">
-				<div className="card-body">
-					<h3 className="card-title">Information</h3>
-					<p className="card-text">
-						<span>Cuisine: </span>
-						{restaurant.cuisine}
-						<br />
-						<span>Address: </span>
-						{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state}, {restaurant.address.zip}
-						<br />
-						<span>Working Days: </span>
-						{restaurant.workingDays.join(', ')}
-						<br />
-						<span>Working Hours: </span>
-						{restaurant.workingHours.from} - {restaurant.workingHours.to}
-						<br />
-						<span>Phone: </span>
-						{restaurant.contactInfo.phone}
-						<br />
-						<span>Email: </span>
-						{restaurant.contactInfo.email}
-					</p>
-					<p className="card-text">Rating: {restaurant.rating}</p>
-				</div>
-			</div>
-
-			<h2 className="mt-4">Dishes</h2>
-			<div className="row mb-4">
-				{restaurant.dishes.map((dish) => (
-					<div key={dish._id} className="col-md-4">
-						<div className="card mt-3">
-							<img src={dish.image} alt={dish.name} className="card-img-top" />
+			<div className="container mt-4 mb-4">
+				<h1 className="display-5 mb-4 fw-bold">{restaurant.name}</h1>
+				<div className="row">
+					<div className="col-md-6 col-sm-12">
+						<img className="img-fluid d-block" src={restaurant.headerImage} alt={`${restaurant.name} header`} />
+					</div>
+					<div className="col-md-6 col-sm-12">
+						<div className="card">
 							<div className="card-body">
-								<h4 className="card-title">{dish.name}</h4>
-								<p className="card-text">
-									<span>Price: </span>${dish.price}
-									<br />
-									<span>Description: </span>
-									{dish.description}
-								</p>
+								<h3 className="card-title">Information</h3>
+								<div className="card-text">
+									<p className="mb-2">
+										<span className="fw-bold">Cuisine: </span>
+										{restaurant.cuisine}
+									</p>
+									<p className="mb-2">
+										<span className="fw-bold">Address: </span>
+										{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state}, {restaurant.address.zip}
+									</p>
+									<p className="mb-2">
+										<span className="fw-bold">Working Days: </span>
+										{restaurant.workingDays.join(', ')}
+									</p>
+									<p className="mb-2">
+										<span className="fw-bold">Working Hours: </span>
+										{restaurant.workingHours.from} - {restaurant.workingHours.to}
+									</p>
+									<p className="mb-2">
+										<span className="fw-bold">Phone: </span>
+										{restaurant.contactInfo.phone}
+									</p>
+									<p className="mb-2">
+										<span className="fw-bold">Email: </span>
+										{restaurant.contactInfo.email}
+									</p>
+									<p className="mb-2">
+										<span className="fw-bold">Rating: </span>
+										<StarRating rating={restaurant.rating} />
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				))}
+				</div>
+			</div>
+
+			<div className="container mb-4">
+				<h2 className="mt-4">Dishes</h2>
+				<div className="row">
+					{restaurant.dishes.map((dish) => (
+						<div key={dish._id} className="col-md-4">
+							<div className="card mt-3">
+								<img src={dish.image} alt={dish.name} className="card-img-top" />
+								<div className="card-body">
+									<h4 className="card-title">{dish.name}</h4>
+									<p className="card-text">
+										<span className="fw-bold">Price: </span>${dish.price}
+										<br />
+										<span className="fw-bold">Description: </span>
+										{dish.description}
+									</p>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	);

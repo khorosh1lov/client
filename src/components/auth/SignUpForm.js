@@ -6,14 +6,13 @@ import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
 import Input from '../forms/Input';
+import TelInput from '../forms/TelInput';
 import axios from "axios";
 import { useState } from "react";
 
 /* 
 import LoginWithThirdParty from "../forms/LogInWithThirdParty";
-import TelInput from "../forms/TelInput"; */
-
-
+ */
 
 
 function SignUpForm() {
@@ -124,11 +123,11 @@ function SignUpForm() {
         />
         <ErrorRequiredMessage label="Last Name" value={lastName} />
 
-        {/* <TelInput
+        <TelInput
           label="Telephone"
           phone={phone}
           setPhone={setPhone}
-        ></TelInput> */}
+        ></TelInput>
 
         <Input
           label="Email"

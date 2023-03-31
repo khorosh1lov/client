@@ -7,10 +7,11 @@ import ProtectedRoute from './components/ProtectedRoute';
 import React from 'react';
 import Restaurant from "./components/Restaurant";
 import Restaurants from "./components/Restaurants";
+import SignInRoute from "./routes/SignInRoute";
+import UserMenuRoute from "./routes/UserMenuRoute";
 
-//import SignInRoute from "./routes/SignInRoute";
 //import SignUpRoute from "./routes/SignUpRoute";
-//import UserMenuRoute from "./routes/UserMenuRoute";
+
 
 //import AddDish from './components/Admin/AddDish';
 
@@ -26,12 +27,12 @@ function App() {
 						<Route index element={<AdminDashboard />} />
 						<Route path="add-restaurant" element={<AddRestaurant />} />
 					</Route>
-					
+
 					<Route path="/" element={<Restaurants />} />
 					<Route path="/:id" element={<Restaurant />} />
-					{/* <Route path="/auth/login" element={<SignInRoute />} />
-					<Route path="/signup" element={<SignUpRoute />} />
-					<Route path="/usermenu" element={<UserMenuRoute />} /> */}
+					<Route path="/auth/login" element={<SignInRoute />} />
+					{/*<Route path="/signup" element={<SignUpRoute />} />*/}
+					<Route path="/usermenu" element={<UserMenuRoute />} />
 				</Routes>
 			</main>
 		</Router>

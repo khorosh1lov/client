@@ -1,12 +1,8 @@
 //-------------BAD LIBRARY WITH MEMORY LEAKING---------------//
-
-import { BsApple, BsFacebook, BsGoogle } from "react-icons/bs";
-
-import { IconContext } from 'react-icons';
-
+/* import { BsApple, BsFacebook, BsGoogle } from "react-icons/bs"; */
 //-------------BAD LIBRARY WITH MEMORY LEAKING---------------//
 
-
+import { IconContext } from 'react-icons';
 
 function LoginWithThirdParty() {
 	return (
@@ -21,15 +17,14 @@ function LoginWithThirdParty() {
 						className: 'global-class-name',
 						size: '1.1em',
 					}}>
-					<BsGoogle />
 				</IconContext.Provider>{' '}
 				Continue with Google
 			</button>
 			<button type="submit" className="col-md-8 mb-2 btn btn-primary text-light">
-				<BsFacebook /> Continue with Facebook
+				Continue with Facebook
 			</button>
 			<button type="submit" className="col-md-8 mb-2 btn btn-dark text-light">
-				<BsApple /> Continue with Apple
+				Continue with Apple
 			</button>
 		</>
 	);

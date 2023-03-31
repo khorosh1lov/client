@@ -22,8 +22,8 @@ const Restaurants = () => {
 
 	return (
 		<div>
-			<h2>Restaurants</h2>
-			<div className="row">
+			<h1 className="mt-4 mb-4">Restaurants</h1>
+			<div className="row mb-4">
 				{restaurants.map((restaurant) => (
 					<div key={restaurant._id} className="col-md-4">
 						<div className="card mb-4">

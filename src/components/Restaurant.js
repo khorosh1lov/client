@@ -27,11 +27,11 @@ const Restaurant = () => {
 
 	return (
 		<div>
-			<h2>{restaurant.name}</h2>
+			<h1 className="mt-4 mb-4">{restaurant.name}</h1>
 			<img src={restaurant.headerImage} alt={`${restaurant.name} header`} className="img-fluid mb-3" />
 			<div className="card">
 				<div className="card-body">
-					<h4 className="card-title">Information</h4>
+					<h3 className="card-title">Information</h3>
 					<p className="card-text">
 						<span>Cuisine: </span>
 						{restaurant.cuisine}
@@ -55,14 +55,14 @@ const Restaurant = () => {
 				</div>
 			</div>
 
-			<h3 className="mt-4">Dishes</h3>
-			<div className="row">
+			<h2 className="mt-4">Dishes</h2>
+			<div className="row mb-4">
 				{restaurant.dishes.map((dish) => (
 					<div key={dish._id} className="col-md-4">
 						<div className="card mt-3">
 							<img src={dish.image} alt={dish.name} className="card-img-top" />
 							<div className="card-body">
-								<h5 className="card-title">{dish.name}</h5>
+								<h4 className="card-title">{dish.name}</h4>
 								<p className="card-text">
 									<span>Price: </span>${dish.price}
 									<br />

@@ -60,6 +60,7 @@ const Restaurant = () => {
 				{restaurant.dishes.map((dish) => (
 					<div key={dish._id} className="col-md-4">
 						<div className="card mt-3">
+							<img src={dish.image} alt={dish.name} className="card-img-top" />
 							<div className="card-body">
 								<h5 className="card-title">{dish.name}</h5>
 								<p className="card-text">

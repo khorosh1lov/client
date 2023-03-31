@@ -1,13 +1,16 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import "../../styles/SignUpForm.css";
-import Input from "../forms/Input";
-import TelInput from "../forms/TelInput";
-import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
+
+import { Link, useNavigate } from "react-router-dom";
+
 import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
-import LoginWithThirdParty from "../forms/LogInWithThirdParty";
+import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
+import Input from "../forms/Input";
+import TelInput from "../forms/TelInput";
+import axios from "axios";
+import { useState } from "react";
+
+/* import LoginWithThirdParty from "../forms/LogInWithThirdParty"; */
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -187,7 +190,7 @@ function SignUpForm() {
         >
           Sign Up
         </button>
-        <LoginWithThirdParty />
+        {/* <LoginWithThirdParty /> */}
         <div className="col-md-8 ">
           <p className="text-muted">
             Already have an account?{" "}

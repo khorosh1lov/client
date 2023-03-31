@@ -1,4 +1,5 @@
-import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
+//import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
+
 import { IconContext } from "react-icons";
 
 function LoginWithThirdParty() {
@@ -15,7 +16,7 @@ function LoginWithThirdParty() {
             size: "1.1em",
           }}
         >
-          <BsGoogle />
+          {/* <BsGoogle /> */}
         </IconContext.Provider>{" "}
         Continue with Google
       </button>
@@ -23,10 +24,10 @@ function LoginWithThirdParty() {
         type="submit"
         className="col-md-8 mb-2 btn btn-primary text-light"
       >
-        <BsFacebook /> Continue with Facebook
+        {/* <BsFacebook /> */} Continue with Facebook
       </button>
       <button type="submit" className="col-md-8 mb-2 btn btn-dark text-light">
-        <BsApple /> Continue with Apple
+        {/* <BsApple /> */} Continue with Apple
       </button>
     </>
   );

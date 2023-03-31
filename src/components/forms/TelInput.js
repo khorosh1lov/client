@@ -1,6 +1,9 @@
 import "react-phone-number-input/style.css";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+
 import Label from "./Label";
+
+//import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+
 
 function TelInput({ label, phone, setPhone }) {
   const TelValueErrorMessage = () => {
@@ -11,7 +14,7 @@ function TelInput({ label, phone, setPhone }) {
     <>
       <div className="col-md-8">
         <Label htmlFor={label}>{label}</Label>
-        <PhoneInput
+        {/* <PhoneInput
           className="form-control input-phone-number"
           international={false}
           defaultCountry="US"
@@ -21,8 +24,8 @@ function TelInput({ label, phone, setPhone }) {
           onChange={setPhone}
           autoComplete="on"
           required
-        />
-        {phone && !isValidPhoneNumber(phone) ? <TelValueErrorMessage /> : null}
+        /> */}
+        {/* {phone && !isValidPhoneNumber(phone) ? <TelValueErrorMessage /> : null} */}
       </div>
     </>
   );

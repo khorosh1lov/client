@@ -1,0 +1,14 @@
+.input-phone-number input,
+.input-phone-number input:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.fieldError {
+  color: rgb(215, 71, 71);
+}
+
+.navbar-toggler {
+  background-color: rgb(228, 192, 47);
+}

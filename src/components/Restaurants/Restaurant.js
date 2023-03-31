@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../../config';
 import StarRating from './StarRating';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';

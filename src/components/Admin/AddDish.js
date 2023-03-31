@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 
 const AddDish = () => {
 	const [formValues, setFormValues] = useState({
@@ -22,4 +22,4 @@ const AddDish = () => {
 	);
 };
 
-export default AddDish;
+export default AddDish;*/

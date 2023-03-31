@@ -2,15 +2,21 @@ import "../../styles/SignUpForm.css";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import ErrorPasswordLength from "../forms/ErrorPasswordLength";
-import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
-import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
 import Input from "../forms/Input";
+import LoginWithThirdParty from "../forms/LogInWithThirdParty";
 import TelInput from "../forms/TelInput";
 import axios from "axios";
 import { useState } from "react";
 
-/* import LoginWithThirdParty from "../forms/LogInWithThirdParty"; */
+/* import ErrorPasswordLength from "../forms/ErrorPasswordLength";
+import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
+import ErrorRequiredMessage from "../forms/ErrorRequiredMessage"; */
+
+
+
+
+
+
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -105,7 +111,7 @@ function SignUpForm() {
             setFirstName({ ...firstName, isTouched: true });
           }}
         />
-        <ErrorRequiredMessage label="First Name" value={firstName} />
+        {/* <ErrorRequiredMessage label="First Name" value={firstName} /> */}
 
         <Input
           label="Last Name"
@@ -118,7 +124,7 @@ function SignUpForm() {
             setLastName({ ...lastName, isTouched: true });
           }}
         />
-        <ErrorRequiredMessage label="Last Name" value={lastName} />
+        {/* <ErrorRequiredMessage label="Last Name" value={lastName} /> */}
 
         <TelInput
           label="Telephone"
@@ -137,7 +143,7 @@ function SignUpForm() {
             setEmail({ ...email, isTouched: true });
           }}
         />
-        <ErrorRequiredMessage label="Email" value={email} />
+        {/* <ErrorRequiredMessage label="Email" value={email} /> */}
 
         <Input
           label="Password"
@@ -151,7 +157,7 @@ function SignUpForm() {
           }}
         />
 
-        <ErrorPasswordLength password={password} />
+        {/* <ErrorPasswordLength password={password} /> */}
 
         <Input
           label="Password Confirmation"
@@ -170,14 +176,14 @@ function SignUpForm() {
             });
           }}
         />
-        <ErrorRequiredMessage
+        {/* <ErrorRequiredMessage
           label="Password Confirmation"
           value={passwordConfirmation}
         />
         <ErrorPasswordMatch
           password={password}
           passwordConfirmation={passwordConfirmation}
-        />
+        /> */}
 
         <div className="col-md-8 ">
           By tapping “Sign Up” or “Continue with Google, Facebook, or Apple,”
@@ -190,7 +196,7 @@ function SignUpForm() {
         >
           Sign Up
         </button>
-        {/* <LoginWithThirdParty /> */}
+        <LoginWithThirdParty />
         <div className="col-md-8 ">
           <p className="text-muted">
             Already have an account?{" "}

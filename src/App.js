@@ -1,6 +1,5 @@
-import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
-import AddDish from './components/Admin/AddDish';
 import AddRestaurant from './components/Admin/AddRestaurant';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import Header from "./components/Header";
@@ -11,6 +10,8 @@ import Restaurants from "./components/Restaurants";
 import SignInRoute from "./routes/SignInRoute";
 import SignUpRoute from "./routes/SignUpRoute";
 import UserMenuRoute from "./routes/UserMenuRoute";
+
+//import AddDish from './components/Admin/AddDish';
 
 function App() {
 	const isAdmin = true; // Add Redux states here
@@ -23,7 +24,6 @@ function App() {
 					<Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
 						<Route index element={<AdminDashboard />} />
 						<Route path="add-restaurant" element={<AddRestaurant />} />
-						<Route path="add-dish" element={<AddDish />} />
 					</Route>
 					
 					<Route path="/" element={<Restaurants />} />

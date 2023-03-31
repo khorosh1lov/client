@@ -11,7 +11,7 @@ const Restaurant = () => {
 	useEffect(() => {
 		const fetchRestaurant = async () => {
 			try {
-				const response = await axios.get(`${API_BASE_URL}/${id}`); // замените match.params.id на id
+				const response = await axios.get(`${API_BASE_URL}/${id}`);
 				setRestaurant(response.data);
 			} catch (error) {
 				console.error('Error fetching restaurant:', error);
@@ -28,6 +28,7 @@ const Restaurant = () => {
 	return (
 		<div>
 			<h2>{restaurant.name}</h2>
+			<img src={restaurant.headerImage} alt={`${restaurant.name} header`} className="img-fluid mb-3" />
 			<div className="card">
 				<div className="card-body">
 					<h4 className="card-title">Information</h4>
@@ -37,6 +38,18 @@ const Restaurant = () => {
 						<br />
 						<span>Address: </span>
 						{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state}, {restaurant.address.zip}
+						<br />
+						<span>Working Days: </span>
+						{restaurant.workingDays.join(', ')}
+						<br />
+						<span>Working Hours: </span>
+						{restaurant.workingHours.from} - {restaurant.workingHours.to}
+						<br />
+						<span>Phone: </span>
+						{restaurant.contactInfo.phone}
+						<br />
+						<span>Email: </span>
+						{restaurant.contactInfo.email}
 					</p>
 					<p className="card-text">Rating: {restaurant.rating}</p>
 				</div>

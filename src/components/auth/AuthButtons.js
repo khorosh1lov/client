@@ -5,7 +5,7 @@ function AuthButtons() {
   return (
     <div>
       <button className="btn btn-outline-success me-3">
-        <Link className="nav-link text-warning" to="/login">
+        <Link className="nav-link text-warning" to="/auth/login">
           Log In
         </Link>
       </button>

@@ -72,7 +72,6 @@ function SignUpForm() {
         console.log(response.status, response.data);
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userName", response.data.user.name);
-
         clearForm();
         navigate("/usermenu", { replace: true });
       })

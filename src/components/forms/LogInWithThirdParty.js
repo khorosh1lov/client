@@ -1,4 +1,5 @@
-//import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs";
+//import { BsFacebook, BsApple, BsGoogle } from "react-icons/bs"; 
+//-------------BAD LIBRARY---------------//
 
 import { IconContext } from "react-icons";
 

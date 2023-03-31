@@ -2,18 +2,16 @@ import "../../styles/SignUpForm.css";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import Input from "../forms/Input";
-import LoginWithThirdParty from "../forms/LogInWithThirdParty";
-import TelInput from "../forms/TelInput";
+import ErrorPasswordLength from "../forms/ErrorPasswordLength";
+import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
+import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
+import Input from '../forms/Input';
 import axios from "axios";
 import { useState } from "react";
 
-/* import ErrorPasswordLength from "../forms/ErrorPasswordLength";
-import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
-import ErrorRequiredMessage from "../forms/ErrorRequiredMessage"; */
-
-
-
+/* 
+import LoginWithThirdParty from "../forms/LogInWithThirdParty";
+import TelInput from "../forms/TelInput"; */
 
 
 
@@ -111,7 +109,7 @@ function SignUpForm() {
             setFirstName({ ...firstName, isTouched: true });
           }}
         />
-        {/* <ErrorRequiredMessage label="First Name" value={firstName} /> */}
+        <ErrorRequiredMessage label="First Name" value={firstName} />
 
         <Input
           label="Last Name"
@@ -124,13 +122,13 @@ function SignUpForm() {
             setLastName({ ...lastName, isTouched: true });
           }}
         />
-        {/* <ErrorRequiredMessage label="Last Name" value={lastName} /> */}
+        <ErrorRequiredMessage label="Last Name" value={lastName} />
 
-        <TelInput
+        {/* <TelInput
           label="Telephone"
           phone={phone}
           setPhone={setPhone}
-        ></TelInput>
+        ></TelInput> */}
 
         <Input
           label="Email"
@@ -143,7 +141,7 @@ function SignUpForm() {
             setEmail({ ...email, isTouched: true });
           }}
         />
-        {/* <ErrorRequiredMessage label="Email" value={email} /> */}
+        <ErrorRequiredMessage label="Email" value={email} />
 
         <Input
           label="Password"
@@ -157,7 +155,7 @@ function SignUpForm() {
           }}
         />
 
-        {/* <ErrorPasswordLength password={password} /> */}
+        <ErrorPasswordLength password={password} />
 
         <Input
           label="Password Confirmation"
@@ -176,18 +174,18 @@ function SignUpForm() {
             });
           }}
         />
-        {/* <ErrorRequiredMessage
+        <ErrorRequiredMessage
           label="Password Confirmation"
           value={passwordConfirmation}
         />
         <ErrorPasswordMatch
           password={password}
           passwordConfirmation={passwordConfirmation}
-        /> */}
+        />
 
         <div className="col-md-8 ">
           By tapping “Sign Up” or “Continue with Google, Facebook, or Apple,”
-          you agree to Delivery’s App Terms and Conditions and Privacy Policy.
+          you agree to Delivery's App Terms and Conditions and Privacy Policy.
         </div>
         <button
           type="submit"
@@ -196,7 +194,7 @@ function SignUpForm() {
         >
           Sign Up
         </button>
-        <LoginWithThirdParty />
+        {/* <LoginWithThirdParty /> */}
         <div className="col-md-8 ">
           <p className="text-muted">
             Already have an account?{" "}

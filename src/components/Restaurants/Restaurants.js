@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { API_BASE_URL } from '../../config';
 import { Link } from 'react-router-dom';
+import SortRestaurants from './SortRestaurants';
 import StarRating from './StarRating';
 import axios from 'axios';
-
-/* import SortRestaurants from './SortRestaurants'; */
-
-
 
 const Restaurants = () => {
 	const [restaurants, setRestaurants] = useState([]);
@@ -52,7 +49,7 @@ const Restaurants = () => {
 			<div className="container">
 				<div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
 					<h1 className="mt-4 mb-4 fw-bolder">Restaurants</h1>
-					<div className="btn-toolbar mb-2 mb-md-0">{/* <SortRestaurants className="btn-group me-2" handleSort={handleSort} sortOrder={sortOrder} sortType={sortType} /> */}</div>
+					<div className="btn-toolbar mb-2 mb-md-0"><SortRestaurants className="btn-group me-2" handleSort={handleSort} sortOrder={sortOrder} sortType={sortType} /></div>
 				</div>
 			</div>
 

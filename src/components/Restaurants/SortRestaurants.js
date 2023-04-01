@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
-const SortRestaurants = ({ handleSort }) => {
+const SortRestaurants = memo(({ handleSort }) => {
 	const [ratingOrder, setRatingOrder] = useState('desc');
 	const [alphabetOrder, setAlphabetOrder] = useState('asc');
 
@@ -33,6 +33,6 @@ const SortRestaurants = ({ handleSort }) => {
 			</div>
 		</div>
 	);
-};
+});
 
 export default SortRestaurants;

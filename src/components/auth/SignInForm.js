@@ -1,9 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-
 import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
 import Input from "../forms/Input";
-import LoginWithThirdParty from "../forms/LogInWithThirdParty";
 import axios from "axios";
 import { useState } from "react";
 
@@ -18,6 +16,11 @@ function SignInForm() {
     value: "",
     isTouched: false,
   });
+  const [error, setError] = useState(false);
+
+  function ErrorLogin() {
+    return <p className="fieldError">The login or password is incorrect</p>;
+  }
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email.value);
@@ -44,13 +47,20 @@ function SignInForm() {
         console.log(response.status, response.data);
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userName", response.data.user.name);
+        localStorage.setItem("role", response.data.user.role);
+        localStorage.setItem("userEmail", response.data.user.email);
         clearForm();
-        navigate("/usermenu", { replace: true });
+        if (localStorage.getItem("role") === "admin") {
+          navigate("/admin", { replace: true });
+        } else {
+          navigate("/user", { replace: true });
+        }
       })
       .catch((err) => {
         localStorage.setItem("isLoggedIn", "false");
         localStorage.removeItem("userName");
         if (err.response) {
+          setError(true);
           console.log(err.response);
           console.log("Server responded");
         } else if (err.request) {
@@ -97,7 +107,7 @@ function SignInForm() {
           </span>
         </div>
         <ErrorPasswordLength password={password} />
-
+        {error ? <ErrorLogin /> : null}
         <button
           type="submit"
           disabled={!getIsFormValid()}
@@ -105,8 +115,6 @@ function SignInForm() {
         >
           Log In
         </button>
-
-        <LoginWithThirdParty /> 
 
         <div className="col-md-8">
           <p className="text-muted">

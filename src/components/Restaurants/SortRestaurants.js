@@ -1,0 +1,38 @@
+import React, { useState } from 'react';
+
+const SortRestaurants = ({ handleSort }) => {
+	const [ratingOrder, setRatingOrder] = useState('desc');
+	const [alphabetOrder, setAlphabetOrder] = useState('asc');
+
+	const handleRatingSort = () => {
+		const newRatingOrder = ratingOrder === 'asc' ? 'desc' : 'asc';
+		setRatingOrder(newRatingOrder);
+		handleSort('rating', newRatingOrder);
+	};
+
+	const handleAlphabetSort = () => {
+		const newAlphabetOrder = alphabetOrder === 'asc' ? 'desc' : 'asc';
+		setAlphabetOrder(newAlphabetOrder);
+		handleSort('alphabet', newAlphabetOrder);
+	};
+
+	const ratingLabel = ratingOrder === 'asc' ? 'lowest first' : 'highest first';
+	const alphabetLabel = alphabetOrder === 'asc' ? 'A to Z' : 'Z to A';
+
+	return (
+		<div className="d-flex">
+			<div className="me-2">
+				<button className="btn btn-outline-secondary" onClick={handleRatingSort}>
+					Rating: {ratingLabel}
+				</button>
+			</div>
+			<div>
+				<button className="btn btn-outline-secondary" onClick={handleAlphabetSort}>
+					Order: {alphabetLabel}
+				</button>
+			</div>
+		</div>
+	);
+};
+
+export default SortRestaurants;

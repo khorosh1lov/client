@@ -28,7 +28,7 @@ const Restaurant = () => {
 
 	return (
 		<div>
-			<div className="container mt-5 pt-5 mb-4">
+			<div className="container mt-4 mb-4">
 				<h1 className="display-5 mb-4 fw-bold">{restaurant.name}</h1>
 				<div className="row">
 					<div className="col-md-6 col-sm-12">

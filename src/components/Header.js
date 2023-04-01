@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <header aria-label="Site Header">
-      <nav className="p-2 navbar navbar-expand-lg bg-dark fixed-top">
+      <nav className="navbar navbar-expand-lg bg-dark fixed-top">
         <div className="container">
           <Link className="navbar-brand text-warning fs-2" to="/">
             DoDelivery
@@ -27,7 +27,7 @@ function Header() {
           <div className="d-flex flex-row justify-content-end">
             {localStorage.getItem("role") === "admin" ? (
               <div>
-                <button className="btn btn-light me-3">
+                <button className="btn btn-light me-2">
                   <Link className="nav-link text-dark" to="/admin">
                     Admin Dashboard
                   </Link>
@@ -36,8 +36,8 @@ function Header() {
             ) : null}
 
             {localStorage.getItem("isLoggedIn") === "true" ? (
-              <div className="me-3">
-                <button className="btn btn-warning me-3">
+              <div className="me-2">
+                <button className="btn btn-warning me-2">
                   <Link className="nav-link text-dark" to="/user">
                     User Menu
                   </Link>
@@ -47,7 +47,7 @@ function Header() {
                 </button>
               </div>
             ) : (
-              <div className="d-flex justify-content-end me-4">
+              <div className="d-flex justify-content-end">
                 <AuthButtons />
               </div>
             )}

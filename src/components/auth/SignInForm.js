@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+
 import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
 import Input from "../forms/Input";
@@ -101,7 +102,7 @@ function SignInForm() {
             setPassword({ ...password, isTouched: true });
           }}
         />
-        <div className="col-md-8">
+        <div className="col-md-12">
           <span id="passwordHelpInline" className="form-text">
             Must be at leat 8 characters long.
           </span>
@@ -111,12 +112,12 @@ function SignInForm() {
         <button
           type="submit"
           disabled={!getIsFormValid()}
-          className=" col-md-8 mt-4 btn btn-success"
+          className=" col-md-12 mt-4 btn btn-success"
         >
           Log In
         </button>
 
-        <div className="col-md-8">
+        <div className="col-md-12">
           <p className="text-muted">
             Don't have an account?{" "}
             <Link className="text-dark" to="/signup">

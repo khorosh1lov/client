@@ -22,9 +22,9 @@ function TelInput({ label, phone, setPhone }) {
 
 	return (
 		<>
-			<div className="col-md-8">
+			<div className="col-md-12">
 				<Label htmlFor={label}>{label}</Label>
-				<input type="tel" className="form-control input-phone-number" id={label} value={phone} onChange={handleChange} placeholder="Enter phone number" autoComplete="on" required />
+				<input type="tel" className="form-control input-phone-number" id={label} value={phone} onChange={handleChange} placeholder="(123) 456-7890" autoComplete="on" required />
 				{phone && !isValidPhoneNumber(phone) ? <TelValueErrorMessage /> : null}
 			</div>
 		</>

@@ -21,7 +21,6 @@ function App() {
   return (
     <Router>
       <Header />
-      <main className="container">
         <Routes>
           <Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
             <Route index element={<AdminDashboard />} />
@@ -33,7 +32,6 @@ function App() {
           <Route path="/signup" element={<SignUpRoute />} />
           <Route path="/user" element={<UserMenuRoute />} />
         </Routes>
-      </main>
     </Router>
   );
 }

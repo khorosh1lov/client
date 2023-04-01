@@ -1,6 +1,6 @@
 import Label from "./Label";
 
-function Input({ label, value, onChange, onBlur, children, ...rest }) {
+function Input({ label, value, placeholder, onChange, onBlur, children, ...rest }) {
   const handleChange = (e) => {
     onChange(e);
   };
@@ -10,12 +10,13 @@ function Input({ label, value, onChange, onBlur, children, ...rest }) {
 
   return (
     <>
-      <div className="col-md-8">
+      <div className="col-md-12">
         <Label htmlFor={label}>{label} </Label>
         <input
           {...rest}
           className="form-control"
           aria-label={label}
+          placeholder={placeholder}
           id={label}
           onChange={handleChange}
           onBlur={handleBlur}

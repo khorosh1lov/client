@@ -7,15 +7,17 @@ function UserMenuRoute() {
 
   if (localStorage.getItem("isLoggedIn") === "true") {
     return (
-      <section className="mt-5">
-        <div className="col-md-8">
-          <h2 className="mb-5">User Profile</h2>
-          <h3 className="mb-5">Hello, {userName} </h3>
-          <p className="mb-5">E-mail: {userEmail}</p>
-          <p className="mb-5">Orders history</p>
-        </div>
-      </section>
-    );
+		<div className="container">
+			<section className="row mt-5">
+				<div className="col-md-12">
+					<h2 className="mb-3">User Profile</h2>
+					<h3 className="mb-5 fw-bold">Hello, {userName}! </h3>
+					<p className="mb-2">E-mail: {userEmail}</p>
+					<p className="mb-2 fw-bold">Orders history</p>
+				</div>
+			</section>
+		</div>
+	);
   } else {
     return <Navigate to="/login" state={{ from: location }} />;
   }

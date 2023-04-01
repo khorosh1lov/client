@@ -1,6 +1,7 @@
 import "../../styles/SignUpForm.css";
 
 import { Link, useNavigate } from "react-router-dom";
+
 import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
@@ -91,114 +92,100 @@ function SignUpForm() {
   };
 
   return (
-    <section>
-      <form className="row g-2" onSubmit={handleSubmit}>
-        <Input
-          label="First Name"
-          type="text"
-          value={firstName.value}
-          onChange={(e) => {
-            setFirstName({ ...firstName, value: e.target.value });
-          }}
-          onBlur={() => {
-            setFirstName({ ...firstName, isTouched: true });
-          }}
-        />
-        <ErrorRequiredMessage label="First Name" value={firstName} />
+		<section>
+			<form className="row g-2" onSubmit={handleSubmit}>
+				<Input
+					label="First Name"
+					type="text"
+					value={firstName.value}
+					placeholder="John"
+					onChange={(e) => {
+						setFirstName({ ...firstName, value: e.target.value });
+					}}
+					onBlur={() => {
+						setFirstName({ ...firstName, isTouched: true });
+					}}
+				/>
+				<ErrorRequiredMessage label="First Name" value={firstName} />
 
-        <Input
-          label="Last Name"
-          type="text"
-          value={lastName.value}
-          onChange={(e) => {
-            setLastName({ ...lastName, value: e.target.value });
-          }}
-          onBlur={() => {
-            setLastName({ ...lastName, isTouched: true });
-          }}
-        />
-        <ErrorRequiredMessage label="Last Name" value={lastName} />
+				<Input
+					label="Last Name"
+					type="text"
+					placeholder="Doe"
+					value={lastName.value}
+					onChange={(e) => {
+						setLastName({ ...lastName, value: e.target.value });
+					}}
+					onBlur={() => {
+						setLastName({ ...lastName, isTouched: true });
+					}}
+				/>
+				<ErrorRequiredMessage label="Last Name" value={lastName} />
 
-        <TelInput
-          label="Telephone"
-          phone={phone}
-          setPhone={setPhone}
-        ></TelInput>
+				<TelInput label="Telephone" phone={phone} setPhone={setPhone}></TelInput>
 
-        <Input
-          label="Email"
-          type="email"
-          value={email.value}
-          onChange={(e) => {
-            setEmail({ ...email, value: e.target.value });
-          }}
-          onBlur={() => {
-            setEmail({ ...email, isTouched: true });
-          }}
-        />
-        <ErrorRequiredMessage label="Email" value={email} />
+				<Input
+					label="Email"
+					type="email"
+					placeholder="example@mail.com"
+					value={email.value}
+					onChange={(e) => {
+						setEmail({ ...email, value: e.target.value });
+					}}
+					onBlur={() => {
+						setEmail({ ...email, isTouched: true });
+					}}
+				/>
+				<ErrorRequiredMessage label="Email" value={email} />
 
-        <Input
-          label="Password"
-          type="password"
-          value={password.value}
-          onChange={(e) => {
-            setPassword({ ...password, value: e.target.value });
-          }}
-          onBlur={() => {
-            setPassword({ ...password, isTouched: true });
-          }}
-        />
+				<Input
+					label="Password"
+					type="password"
+					value={password.value}
+					onChange={(e) => {
+						setPassword({ ...password, value: e.target.value });
+					}}
+					onBlur={() => {
+						setPassword({ ...password, isTouched: true });
+					}}
+				/>
 
-        <ErrorPasswordLength password={password} />
+				<ErrorPasswordLength password={password} />
 
-        <Input
-          label="Password Confirmation"
-          type="password"
-          value={passwordConfirmation.value}
-          onChange={(e) => {
-            setPasswordConfirmation({
-              ...passwordConfirmation,
-              value: e.target.value,
-            });
-          }}
-          onBlur={() => {
-            setPasswordConfirmation({
-              ...passwordConfirmation,
-              isTouched: true,
-            });
-          }}
-        />
-        <ErrorRequiredMessage
-          label="Password Confirmation"
-          value={passwordConfirmation}
-        />
-        <ErrorPasswordMatch
-          password={password}
-          passwordConfirmation={passwordConfirmation}
-        />
+				<Input
+					label="Password Confirmation"
+					type="password"
+					value={passwordConfirmation.value}
+					onChange={(e) => {
+						setPasswordConfirmation({
+							...passwordConfirmation,
+							value: e.target.value,
+						});
+					}}
+					onBlur={() => {
+						setPasswordConfirmation({
+							...passwordConfirmation,
+							isTouched: true,
+						});
+					}}
+				/>
+				<ErrorRequiredMessage label="Password Confirmation" value={passwordConfirmation} />
+				<ErrorPasswordMatch password={password} passwordConfirmation={passwordConfirmation} />
 
-        <div className="col-md-8 ">
-          By tapping “Sign Up” or “Continue with Google, Facebook, or Apple,”
-          you agree to Delivery's App Terms and Conditions and Privacy Policy.
-        </div>
-        <button
-          type="submit"
-          className="col-md-8 mt-3 btn btn-danger"
-          disabled={!getIsFormValid()}
-        >
-          Sign Up
-        </button>
-        <div className="col-md-8 ">
-          <p className="text-muted">
-            Already have an account?{" "}
-            <Link className="text-dark" to="/login">
-              Log In
-            </Link>
-          </p>
-        </div>
-      </form>
-    </section>
+				<div className="col-md-12 ">By tapping “Sign Up” or “Continue with Google, Facebook, or Apple,” you agree to Delivery's App Terms and Conditions and Privacy Policy.</div>
+				<button type="submit" className="col-md-12 mt-3 btn btn-danger" disabled={!getIsFormValid()}>
+					Sign Up
+				</button>
+				<div className="col-md-12 ">
+					<p className="text-muted">
+						Already have an account?{' '}
+						<Link className="text-dark" to="/login">
+							Log In
+						</Link>
+					</p>
+				</div>
+			</form>
+		</section>
   );
 }
 

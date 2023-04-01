@@ -69,8 +69,6 @@ const AddRestaurant = () => {
 		}
 	};
 
-
-
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		
@@ -83,8 +81,8 @@ const AddRestaurant = () => {
 			alert('Error adding restaurant');
 		}
 		} catch (error) {
-		console.error(error);
-		alert('Error adding restaurant');
+			console.error(error);
+			alert('Error adding restaurant');
 		}
 	};
 
@@ -100,7 +98,7 @@ const AddRestaurant = () => {
 							</Link>
 						</div>
 						<h1 className="mb-5">Add a new restaurant</h1>
-						<form onSubmit={handleSubmit} enctype="multipart/form-data" className="row g-3">
+						<form onSubmit={handleSubmit} encType="multipart/form-data" className="row g-3">
 							<div className="col-md-6 mb-3">
 								<label htmlFor="name" className="form-label">
 									Name:

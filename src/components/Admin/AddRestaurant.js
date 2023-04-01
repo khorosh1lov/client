@@ -7,40 +7,56 @@ import axios from "axios";
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const AddRestaurant = () => {
-  const [formValues, setFormValues] = useState({
-    name: "",
-    street: "",
-    city: "",
-    state: "",
-    zip: "",
-    phone: "",
-    email: "",
-    cuisine: "",
-    workingDays: "",
-    workingHours: {
-      from: "",
-      to: "",
-    },
-    logo: "",
-    headerImage: "",
-  });
+	const [formValues, setFormValues] = useState({
+			name: '',
+			address: {
+				street: '',
+				city: '',
+				state: '',
+				zip: '',
+			},
+			contactInfo: {
+				phone: '',
+				email: '',
+			},
+			cuisine: '',
+			workingDays: '',
+			workingHours: {
+				from: '',
+				to: '',
+			},
+			logo: '',
+			headerImage: '',
+  	});
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    const nameParts = name.split(".");
+		const { name, value } = event.target;
+		const nameParts = name.split('.');
 
-    if (nameParts.length === 2) {
-      setFormValues((prevValues) => ({
-        ...prevValues,
-        [nameParts[0]]: {
-          ...prevValues[nameParts[0]],
-          [nameParts[1]]: value,
-        },
-      }));
-    } else {
-      setFormValues({ ...formValues, [name]: value });
-    }
-  };
+		if (nameParts.length === 3) {
+			setFormValues((prevValues) => ({
+				...prevValues,
+				[nameParts[0]]: {
+					...prevValues[nameParts[0]],
+					[nameParts[1]]: {
+						...prevValues[nameParts[0]][nameParts[1]],
+						[nameParts[2]]: value,
+					},
+				},
+			}));
+		} else if (nameParts.length === 2) {
+			setFormValues((prevValues) => ({
+				...prevValues,
+				[nameParts[0]]: {
+					...prevValues[nameParts[0]],
+					[nameParts[1]]: value,
+				},
+			}));
+		} else {
+			setFormValues({ ...formValues, [name]: value });
+		}
+  	};
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();

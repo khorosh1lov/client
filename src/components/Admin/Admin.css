@@ -1,0 +1,18 @@
+.sidebar {
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1)
+}
+
+.admin-nav-link,
+.admin-nav-link svg {
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    color: #233658;
+}
+
+.admin-nav-link:hover,
+.admin-nav-link:active,
+.admin-nav-link:focus,
+.admin-nav-link:hover svg,
+.admin-nav-link:active svg,
+.admin-nav-link:focus svg {
+    color: #b03c3c;
+}

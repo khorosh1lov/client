@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.css";
-import "font-awesome/css/font-awesome.min.css";
 
 import App from "./App";
 import React from "react";

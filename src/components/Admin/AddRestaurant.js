@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { API_BASE_URL } from '../../config'
 import axios from 'axios';
 
 const AddRestaurant = () => {
@@ -41,7 +42,7 @@ const AddRestaurant = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		try {
-			const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/`, formValues);
+			const response = await axios.post(`${API_BASE_URL}/`, formValues);
 
 			if (response.status === 200) {
 				alert('Restaurant added successfully');

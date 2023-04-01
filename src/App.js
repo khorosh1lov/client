@@ -22,10 +22,10 @@ function App() {
     <Router>
       <Header />
         <Routes>
-          <Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
+          {/* <Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
             <Route index element={<AdminDashboard />} />
             <Route path="add-restaurant" element={<AddRestaurant />} />
-          </Route>
+          </Route> */}
           <Route path="/" element={<Restaurants />} />
           <Route path="/:id" element={<Restaurant />} />
           <Route path="/login" element={<SignInRoute />} />

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import { API_BASE_URL } from '../../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import StarRating from './StarRating';
 import axios from 'axios';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 
 const Restaurant = () => {
@@ -29,6 +32,12 @@ const Restaurant = () => {
 	return (
 		<div>
 			<div className="container mt-4 mb-4">
+				<div className="mb-2">
+					<Link to="/" className="nav-link fw-bold" aria-current="page">
+						<FontAwesomeIcon icon={faArrowLeft} />
+						&nbsp;back to all Restaurants
+					</Link>
+				</div>
 				<h1 className="display-5 mb-4 fw-bold">{restaurant.name}</h1>
 				<div className="row">
 					<div className="col-md-6 col-sm-12">

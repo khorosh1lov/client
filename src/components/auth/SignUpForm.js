@@ -1,13 +1,11 @@
 import "../../styles/SignUpForm.css";
 
 import { Link, useNavigate } from "react-router-dom";
-
 import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
-import Input from '../forms/Input';
-import LoginWithThirdParty from "../forms/LogInWithThirdParty";
-import TelInput from '../forms/TelInput';
+import Input from "../forms/Input";
+import TelInput from "../forms/TelInput";
 import axios from "axios";
 import { useState } from "react";
 
@@ -74,8 +72,10 @@ function SignUpForm() {
         console.log(response.status, response.data);
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userName", response.data.user.name);
+        localStorage.setItem("userEmail", response.data.user.email);
+        localStorage.setItem("role", response.data.user.role);
         clearForm();
-        navigate("/usermenu", { replace: true });
+        navigate("/user", { replace: true });
       })
       .catch((err) => {
         localStorage.setItem("isLoggedIn", "false");
@@ -189,7 +189,6 @@ function SignUpForm() {
         >
           Sign Up
         </button>
-        <LoginWithThirdParty />
         <div className="col-md-8 ">
           <p className="text-muted">
             Already have an account?{" "}

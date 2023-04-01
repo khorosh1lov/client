@@ -4,13 +4,13 @@ import "../../styles/SignUpForm.css";
 function AuthButtons() {
   return (
     <div>
-      <button className="btn btn-outline-success me-3">
-        <Link className="nav-link text-warning" to="/auth/login">
+      <button className="m-2 btn btn-outline-warning me-3">
+        <Link className="nav-link" to="/login">
           Log In
         </Link>
       </button>
-      <button className="btn btn-success">
-        <Link className="nav-link text-warning" to="/signup">
+      <button className="btn btn-warning">
+        <Link className="nav-link" to="/signup">
           Sign Up
         </Link>
       </button>

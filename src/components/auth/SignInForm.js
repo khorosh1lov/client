@@ -1,9 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-
 import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
 import Input from "../forms/Input";
-import LoginWithThirdParty from "../forms/LogInWithThirdParty";
 import axios from "axios";
 import { useState } from "react";
 
@@ -44,8 +42,15 @@ function SignInForm() {
         console.log(response.status, response.data);
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userName", response.data.user.name);
+        localStorage.setItem("role", response.data.user.role);
+        localStorage.setItem("userEmail", response.data.user.email);
+
         clearForm();
-        navigate("/usermenu", { replace: true });
+        if (localStorage.getItem("role") === "admin") {
+          navigate("/admin", { replace: true });
+        } else {
+          navigate("/user", { replace: true });
+        }
       })
       .catch((err) => {
         localStorage.setItem("isLoggedIn", "false");
@@ -105,8 +110,6 @@ function SignInForm() {
         >
           Log In
         </button>
-
-        <LoginWithThirdParty /> 
 
         <div className="col-md-8">
           <p className="text-muted">

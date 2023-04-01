@@ -7,21 +7,35 @@ function Header() {
     e.preventDefault();
     localStorage.setItem("isLoggedIn", "false");
     localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("role");
+    localStorage.removeItem("userEmail");
+
     navigate("/", { replace: true });
   };
 
   return (
     <header aria-label="Site Header">
       <nav className="p-2 navbar navbar-expand-lg bg-dark">
-        <div className="container-fluid">
+        <div className="container-fluid ms-5">
           <Link className="navbar-brand text-warning" to="/">
-            Delivery App
+            <h1>Delivery App</h1>
           </Link>
           <div className="d-flex flex-row justify-content-end">
-            {localStorage.getItem("isLoggedIn") === "true" ? (
+            {localStorage.getItem("role") === "admin" ? (
               <div>
+                <button className="btn btn-light me-3">
+                  <Link className="nav-link text-dark" to="/admin">
+                    Admin Dashboard
+                  </Link>
+                </button>
+              </div>
+            ) : null}
+
+            {localStorage.getItem("isLoggedIn") === "true" ? (
+              <div className="me-3">
                 <button className="btn btn-warning me-3">
-                  <Link className="nav-link text-dark" to="/usermenu">
+                  <Link className="nav-link text-dark" to="/user">
                     User Menu
                   </Link>
                 </button>
@@ -30,7 +44,7 @@ function Header() {
                 </button>
               </div>
             ) : (
-              <div className="d-flex justify-content-end">
+              <div className="d-flex justify-content-end me-4">
                 <AuthButtons />
               </div>
             )}

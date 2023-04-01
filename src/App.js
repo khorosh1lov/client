@@ -23,15 +23,15 @@ function App() {
       <Header />
       <main className="container">
         <Routes>
-          <Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
+          {/* <Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
             <Route index element={<AdminDashboard />} />
             <Route path="add-restaurant" element={<AddRestaurant />} />
-          </Route>
+          </Route> */}
           <Route path="/" element={<Restaurants />} />
           <Route path="/:id" element={<Restaurant />} />
           <Route path="/login" element={<SignInRoute />} />
           <Route path="/signup" element={<SignUpRoute />} />
-          {/* <Route path="/user" element={<UserMenuRoute />} /> */}
+          <Route path="/user" element={<UserMenuRoute />} />
         </Routes>
       </main>
     </Router>

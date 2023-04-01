@@ -90,40 +90,40 @@ const AddRestaurant = () => {
 								<input type="text" id="cuisine" name="cuisine" className="form-control" value={formValues.cuisine} onChange={handleChange} required />
 							</div>
 							<div className="col-md-6 mb-3">
-								<label htmlFor="street" className="form-label">
+								<label htmlFor="addressStreet" className="form-label">
 									Street address:
 								</label>
-								<input type="text" id="street" name="street" className="form-control" value={formValues.address.street} onChange={handleChange} required />
+								<input type="text" id="addressStreet" name="address.street" className="form-control" value={formValues.address.street} onChange={handleChange} />
 							</div>
 							<div className="col-md-6 mb-3">
-								<label htmlFor="city" className="form-label">
+								<label htmlFor="addressCity" className="form-label">
 									City:
 								</label>
-								<input type="text" id="city" name="city" className="form-control" value={formValues.address.city} onChange={handleChange} required />
+								<input type="text" id="addressCity" name="address.city" className="form-control" value={formValues.address.city} onChange={handleChange} />
 							</div>
 							<div className="col-md-6 mb-3">
-								<label htmlFor="state" className="form-label">
+								<label htmlFor="addressState" className="form-label">
 									State:
 								</label>
-								<input type="text" id="state" name="state" className="form-control" value={formValues.address.state} onChange={handleChange} required />
+								<input type="text" id="addressState" name="address.state" className="form-control" value={formValues.address.state} onChange={handleChange} />
 							</div>
 							<div className="col-md-6 mb-3">
-								<label htmlFor="zip" className="form-label">
+								<label htmlFor="addressZip" className="form-label">
 									Zip-code:
 								</label>
-								<input type="text" id="zip" name="zip" className="form-control" value={formValues.address.zip} onChange={handleChange} required />
+								<input type="text" id="addressZip" name="address.zip" className="form-control" value={formValues.address.zip} onChange={handleChange} />
 							</div>
 							<div className="col-md-6 mb-3">
-								<label htmlFor="phone" className="form-label">
+								<label htmlFor="contactInfoPhone" className="form-label">
 									Phone number:
 								</label>
-								<input type="text" id="phone" name="phone" className="form-control" value={formValues.contactInfo.phone} onChange={handleChange} required />
+								<input type="text" id="contactInfoPhone" name="contactInfo.phone" className="form-control" value={formValues.contactInfo.phone} onChange={handleChange} />
 							</div>
 							<div className="col-md-6 mb-3">
-								<label htmlFor="email" className="form-label">
+								<label htmlFor="contactInfoEmail" className="form-label">
 									Email:
 								</label>
-								<input type="email" id="email" name="email" className="form-control" value={formValues.contactInfo.email} onChange={handleChange} required />
+								<input type="email" id="contactInfoEmail" name="contactInfo.email" className="form-control" value={formValues.contactInfo.email} onChange={handleChange} />
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="workingDays" className="form-label">

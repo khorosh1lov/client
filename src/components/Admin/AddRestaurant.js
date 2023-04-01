@@ -8,85 +8,83 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const AddRestaurant = () => {
 	const [formValues, setFormValues] = useState({
-			name: '',
-			address: {
-				street: '',
-				city: '',
-				state: '',
-				zip: '',
-			},
-			contactInfo: {
-				phone: '',
-				email: '',
-			},
-			cuisine: '',
-			workingDays: '',
-			workingHours: {
-				from: '',
-				to: '',
-			},
-			logo: '',
-			headerImage: '',
-  	});
+		name: '',
+		cuisine: '',
+		address: {
+			street: '',
+			city: '',
+			state: '',
+			zip: '',
+		},
+		contactInfo: {
+			phone: '',
+			email: '',
+		},
+		workingDays: '',
+		workingHours: {
+			from: '',
+			to: '',
+		},
+		logo: '',
+		headerImage: '',
+	});
 
-  	const handleChange = (event) => {
-		const { name, value } = event.target;
+	const handleChange = (e) => {
+		const { name, value } = e.target;
 		const nameParts = name.split('.');
 
-		if (nameParts.length === 2) {
-			setFormValues((prevValues) => ({
-				...prevValues,
-				[nameParts[0]]: {
-					...prevValues[nameParts[0]],
+		if (nameParts.length > 1) {
+			setFormValues((prev) => {
+				const updatedNestedField = {
+					...prev[nameParts[0]],
 					[nameParts[1]]: value,
-				},
-			}));
-		} else {
-			setFormValues({ ...formValues, [name]: value });
-		}
-  	};
-
-	const handleFileChange = async (event) => {
-		const file = event.target.files[0];
-		const formData = new FormData();
-		formData.append('image', file);
-
-		try {
-			const response = await axios.post(`${API_BASE_URL}/upload/image`, formData, {
-				headers: {
-					'Content-Type': 'multipart/form-data',
-				},
+				};
+				return { ...prev, [nameParts[0]]: updatedNestedField };
 			});
-
-			if (response.status === 201) {
-				setFormValues({ ...formValues, logo: response.data.imageUrl });
-			} else {
-				alert('Error uploading image');
-			}
-		} catch (error) {
-			console.error(error);
-			alert('Error uploading image');
+		} else {
+			setFormValues((prev) => ({ ...prev, [name]: value }));
 		}
+	};
+
+	const handleFileChange = (e) => {
+		const { name, files } = e.target;
+		if (files.length > 0) {
+			const file = files[0];
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				setFormValues((prev) => ({ ...prev, [name]: e.target.result }));
+			};
+			reader.readAsDataURL(file);
+		} else {
+			setFormValues((prev) => ({ ...prev, [name]: '' }));
+		}
+	};
+
+	const handleDirectImageUrlChange = (e) => {
+		const { name, value } = e.target;
+		const targetName = name.replace('directImageUrl', '').toLowerCase();
+		setFormValues((prev) => ({ ...prev, [targetName]: value }));
 	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		
-		try {
-		const response = await axios.post(`${API_BASE_URL}/`, formValues);
+		console.log(formValues);
 
-		if (response.status === 201) {
-			alert('Restaurant added successfully');
-		} else {
-			alert('Error adding restaurant');
-		}
+		try {
+			const response = await axios.post(`${API_BASE_URL}/`, formValues);
+
+			if (response.status === 201) {
+				alert('Restaurant added successfully');
+			} else {
+				alert('Error adding restaurant');
+			}
 		} catch (error) {
 			console.error(error);
 			alert('Error adding restaurant');
 		}
 	};
 
-  return (
+	return (
 		<div className="container">
 			<section className="d-flex justify-content-center ">
 				<div className="col-md-12">
@@ -167,15 +165,27 @@ const AddRestaurant = () => {
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="logo" className="form-label">
-									Logo URL:
+									Logo:
 								</label>
 								<input type="file" id="logo" name="logo" className="form-control" onChange={handleFileChange} />
 							</div>
 							<div className="col-md-6 mb-3">
+								<label htmlFor="directImageUrlLogo" className="form-label">
+									Or direct URL:
+								</label>
+								<input type="text" id="directImageUrlLogo" name="directImageUrlLogo" className="form-control" onChange={handleDirectImageUrlChange} placeholder="Enter direct image URL" />
+							</div>
+							<div className="col-md-6 mb-3">
 								<label htmlFor="headerImage" className="form-label">
-									Header Image URL:
+									Header Image:
 								</label>
 								<input type="file" id="headerImage" name="headerImage" className="form-control" onChange={handleFileChange} />
+							</div>
+							<div className="col-md-6 mb-3">
+								<label htmlFor="directImageUrlHeader" className="form-label">
+									Or direct URL:
+								</label>
+								<input type="text" id="directImageUrlHeader" name="directImageUrlHeader" className="form-control" onChange={handleDirectImageUrlChange} placeholder="Enter direct image URL" />
 							</div>
 							<div className="mb-3">
 								<button type="submit" className="btn btn-success btn-lg mb-3">
@@ -187,7 +197,7 @@ const AddRestaurant = () => {
 				</div>
 			</section>
 		</div>
-  );
+	);
 };
 
 export default AddRestaurant;

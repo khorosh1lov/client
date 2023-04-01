@@ -33,16 +33,26 @@ const AddRestaurant = () => {
 		const { name, value } = event.target;
 		const nameParts = name.split('.');
 
-		if (nameParts.length === 2) {
-			setFormValues((prevValues) => (
-				{
-					...prevValues,
-					[nameParts[0]]: {
-						...prevValues[nameParts[0]], // TODO: Issue here
-						[nameParts[1]]: value,
+		/* if (nameParts.length === 3) {
+			setFormValues((prevValues) => ({
+				...prevValues,
+				[nameParts[0]]: {
+					...prevValues[nameParts[0]],
+					[nameParts[1]]: {
+						...prevValues[nameParts[0]][nameParts[1]],
+						[nameParts[2]]: value,
 					},
-				}
-			));
+				},
+			}));
+		}   */
+		if (nameParts.length === 2) {
+			setFormValues((prevValues) => ({
+				...prevValues,
+				[nameParts[0]]: {
+					...prevValues[nameParts[0]], // TODO: potential issue here
+					[nameParts[1]]: value,
+				},
+			}));
 		} else {
 			setFormValues({ ...formValues, [name]: value });
 		}
@@ -56,13 +66,13 @@ const AddRestaurant = () => {
       const response = await axios.post(`${API_BASE_URL}/`, formValues);
 
       if (response.status === 200) {
-        alert("Restaurant added successfully");
+        alert('Restaurant added successfully:', response.status);
       } else {
-        alert("Error adding restaurant");
+        alert('Error adding restaurant:', response.status);
       }
     } catch (error) {
       console.error(error);
-      alert("Error adding restaurant");
+      alert('Error adding restaurant');
     }
   };
 

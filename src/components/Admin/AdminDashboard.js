@@ -17,11 +17,11 @@ const AdminDashboard = () => {
 								<FontAwesomeIcon icon={faShop} className="feather feather-home align-text-center" />
 								&nbsp;Add new restaurant
 							</Link>
-							<Link to="/admin" className="admin-nav-link nav-link fw-bold" aria-current="page">
+							<Link to="/" className="admin-nav-link nav-link fw-bold" aria-current="page">
 								<FontAwesomeIcon icon={faBowlFood} className="feather feather-home align-text-center" />
 								&nbsp;Add new dish
 							</Link>
-							<Link to="/admin" className="admin-nav-link nav-link fw-bold" aria-current="page">
+							<Link to="/" className="admin-nav-link nav-link fw-bold" aria-current="page">
 								<FontAwesomeIcon icon={faUsers} className="feather feather-home align-text-center" />
 								&nbsp;Users
 							</Link>

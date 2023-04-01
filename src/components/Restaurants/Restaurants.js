@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import { API_BASE_URL } from '../../config';
 import { Link } from 'react-router-dom';
-import SortRestaurants from './SortRestaurants';
 import StarRating from './StarRating';
 import axios from 'axios';
+
+/* import SortRestaurants from './SortRestaurants'; */
+
+
 
 const Restaurants = () => {
 	const [restaurants, setRestaurants] = useState([]);
@@ -47,11 +50,9 @@ const Restaurants = () => {
 	return (
 		<div>
 			<div className="container">
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+				<div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
 					<h1 className="mt-4 mb-4 fw-bolder">Restaurants</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">
-						<SortRestaurants className="btn-group me-2" handleSort={handleSort} sortOrder={sortOrder} sortType={sortType} />
-					</div>
+					<div className="btn-toolbar mb-2 mb-md-0">{/* <SortRestaurants className="btn-group me-2" handleSort={handleSort} sortOrder={sortOrder} sortType={sortType} /> */}</div>
 				</div>
 			</div>
 
@@ -70,9 +71,9 @@ const Restaurants = () => {
 											<span className="fw-bold">Cuisine: </span>
 											{restaurant.cuisine}
 										</p>
-										<p className="mb-4">
+										<div className="mb-4">
 											<span className="fw-bold">Rating: </span> <StarRating rating={restaurant.rating} />
-										</p>
+										</div>
 										<Link to={`${restaurant._id}`} className="stretched-link text-decoration-none">
 											Order here now!
 										</Link>
@@ -107,9 +108,9 @@ const Restaurants = () => {
 											<span className="fw-bold">Address: </span>
 											{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state}, {restaurant.address.zip}
 										</p>
-										<p className="card-text">
+										<div className="card-text">
 											Rating: <StarRating rating={restaurant.rating} />
-										</p>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -63,10 +63,10 @@ const Restaurant = () => {
 										<span className="fw-bold">Email: </span>
 										{restaurant.contactInfo.email}
 									</p>
-									<p className="mb-2">
+									<div className="mb-2">
 										<span className="fw-bold">Rating: </span>
 										<StarRating rating={restaurant.rating} />
-									</p>
+									</div>
 								</div>
 							</div>
 						</div>

@@ -7,7 +7,7 @@ function UserMenuRoute() {
 
   if (localStorage.getItem("isLoggedIn") === "true") {
     return (
-      <section className="m-5">
+      <section className="mt-5">
         <div className="col-md-8">
           <h2 className="mb-5">User Profile</h2>
           <h3 className="mb-5">Hello, {userName} </h3>

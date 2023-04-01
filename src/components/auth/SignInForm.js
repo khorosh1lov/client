@@ -16,6 +16,11 @@ function SignInForm() {
     value: "",
     isTouched: false,
   });
+  const [error, setError] = useState(false);
+
+  function ErrorLogin() {
+    return <p className="fieldError">The login or password is incorrect</p>;
+  }
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email.value);
@@ -44,7 +49,6 @@ function SignInForm() {
         localStorage.setItem("userName", response.data.user.name);
         localStorage.setItem("role", response.data.user.role);
         localStorage.setItem("userEmail", response.data.user.email);
-
         clearForm();
         if (localStorage.getItem("role") === "admin") {
           navigate("/admin", { replace: true });
@@ -56,6 +60,7 @@ function SignInForm() {
         localStorage.setItem("isLoggedIn", "false");
         localStorage.removeItem("userName");
         if (err.response) {
+          setError(true);
           console.log(err.response);
           console.log("Server responded");
         } else if (err.request) {
@@ -102,7 +107,7 @@ function SignInForm() {
           </span>
         </div>
         <ErrorPasswordLength password={password} />
-
+        {error ? <ErrorLogin /> : null}
         <button
           type="submit"
           disabled={!getIsFormValid()}

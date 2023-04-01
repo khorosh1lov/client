@@ -29,29 +29,20 @@ const AddRestaurant = () => {
 			headerImage: '',
   	});
 
-  const handleChange = (event) => {
+  	const handleChange = (event) => {
 		const { name, value } = event.target;
 		const nameParts = name.split('.');
 
-		if (nameParts.length === 3) {
-			setFormValues((prevValues) => ({
-				...prevValues,
-				[nameParts[0]]: {
-					...prevValues[nameParts[0]],
-					[nameParts[1]]: {
-						...prevValues[nameParts[0]][nameParts[1]],
-						[nameParts[2]]: value,
+		if (nameParts.length === 2) {
+			setFormValues((prevValues) => (
+				{
+					...prevValues,
+					[nameParts[0]]: {
+						...prevValues[nameParts[0]], // TODO: Issue here
+						[nameParts[1]]: value,
 					},
-				},
-			}));
-		} else if (nameParts.length === 2) {
-			setFormValues((prevValues) => ({
-				...prevValues,
-				[nameParts[0]]: {
-					...prevValues[nameParts[0]],
-					[nameParts[1]]: value,
-				},
-			}));
+				}
+			));
 		} else {
 			setFormValues({ ...formValues, [name]: value });
 		}
@@ -60,6 +51,7 @@ const AddRestaurant = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+	
     try {
       const response = await axios.post(`${API_BASE_URL}/`, formValues);
 

@@ -63,7 +63,12 @@ const AddRestaurant = () => {
 	const handleDirectImageUrlChange = (e) => {
 		const { name, value } = e.target;
 		const targetName = name.replace('directImageUrl', '').toLowerCase();
-		setFormValues((prev) => ({ ...prev, [targetName]: value }));
+
+		if (targetName === 'logo') {
+			setFormValues((prev) => ({ ...prev, logo: value }));
+		} else if (targetName === 'header') {
+			setFormValues((prev) => ({ ...prev, headerImage: value }));
+		}
 	};
 
 	const handleSubmit = async (event) => {

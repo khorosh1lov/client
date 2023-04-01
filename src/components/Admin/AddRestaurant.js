@@ -33,23 +33,11 @@ const AddRestaurant = () => {
 		const { name, value } = event.target;
 		const nameParts = name.split('.');
 
-		/* if (nameParts.length === 3) {
-			setFormValues((prevValues) => ({
-				...prevValues,
-				[nameParts[0]]: {
-					...prevValues[nameParts[0]],
-					[nameParts[1]]: {
-						...prevValues[nameParts[0]][nameParts[1]],
-						[nameParts[2]]: value,
-					},
-				},
-			}));
-		}   */
 		if (nameParts.length === 2) {
 			setFormValues((prevValues) => ({
 				...prevValues,
 				[nameParts[0]]: {
-					...prevValues[nameParts[0]], // TODO: potential issue here
+					...prevValues[nameParts[0]],
 					[nameParts[1]]: value,
 				},
 			}));
@@ -66,9 +54,9 @@ const AddRestaurant = () => {
       const response = await axios.post(`${API_BASE_URL}/`, formValues);
 
       if (response.status === 200) {
-        alert('Restaurant added successfully:', response.status);
+        alert('Restaurant added successfully');
       } else {
-        alert('Error adding restaurant:', response.status);
+        alert('Error adding restaurant');
       }
     } catch (error) {
       console.error(error);
@@ -105,37 +93,37 @@ const AddRestaurant = () => {
 								<label htmlFor="street" className="form-label">
 									Street address:
 								</label>
-								<input type="text" id="street" name="street" className="form-control" value={formValues.street} onChange={handleChange} required />
+								<input type="text" id="street" name="street" className="form-control" value={formValues.address.street} onChange={handleChange} required />
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="city" className="form-label">
 									City:
 								</label>
-								<input type="text" id="city" name="city" className="form-control" value={formValues.city} onChange={handleChange} required />
+								<input type="text" id="city" name="city" className="form-control" value={formValues.address.city} onChange={handleChange} required />
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="state" className="form-label">
 									State:
 								</label>
-								<input type="text" id="state" name="state" className="form-control" value={formValues.state} onChange={handleChange} required />
+								<input type="text" id="state" name="state" className="form-control" value={formValues.address.state} onChange={handleChange} required />
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="zip" className="form-label">
 									Zip-code:
 								</label>
-								<input type="text" id="zip" name="zip" className="form-control" value={formValues.zip} onChange={handleChange} required />
+								<input type="text" id="zip" name="zip" className="form-control" value={formValues.address.zip} onChange={handleChange} required />
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="phone" className="form-label">
 									Phone number:
 								</label>
-								<input type="text" id="phone" name="phone" className="form-control" value={formValues.phone} onChange={handleChange} required />
+								<input type="text" id="phone" name="phone" className="form-control" value={formValues.contactInfo.phone} onChange={handleChange} required />
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="email" className="form-label">
 									Email:
 								</label>
-								<input type="email" id="email" name="email" className="form-control" value={formValues.email} onChange={handleChange} required />
+								<input type="email" id="email" name="email" className="form-control" value={formValues.contactInfo.email} onChange={handleChange} required />
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="workingDays" className="form-label">

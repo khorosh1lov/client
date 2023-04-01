@@ -1,6 +1,6 @@
 import Label from "./Label";
 
-function Input({ label, value, placeholder, onChange, onBlur, children, ...rest }) {
+function Input({ label, value, onChange, onBlur, children, ...rest }) {
   const handleChange = (e) => {
     onChange(e);
   };
@@ -16,7 +16,6 @@ function Input({ label, value, placeholder, onChange, onBlur, children, ...rest 
           {...rest}
           className="form-control"
           aria-label={label}
-          placeholder={placeholder}
           id={label}
           onChange={handleChange}
           onBlur={handleBlur}

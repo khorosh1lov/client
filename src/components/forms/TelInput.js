@@ -1,10 +1,6 @@
 import Label from './Label';
 import React from 'react';
 
-//-------------BAD LIBRARY WITH MEMORY LEAKING---------------//
-//import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-//-------------BAD LIBRARY WITH MEMORY LEAKING---------------//
-
 function TelInput({ label, phone, setPhone }) {
 	const TelValueErrorMessage = () => {
 		return <p className="fieldError">* Invalid telephone number</p>;

@@ -46,23 +46,47 @@ const AddRestaurant = () => {
 		}
   	};
 
+	const handleFileChange = async (event) => {
+		const file = event.target.files[0];
+		const formData = new FormData();
+		formData.append('image', file);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-	
-    try {
-      const response = await axios.post(`${API_BASE_URL}/`, formValues);
+		try {
+			const response = await axios.post(`${API_BASE_URL}/upload/image`, formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			});
 
-      if (response.status === 201) {
-        alert('Restaurant added successfully');
-      } else {
-        alert('Error adding restaurant');
-      }
-    } catch (error) {
-      console.error(error);
-      alert('Error adding restaurant');
-    }
-  };
+			if (response.status === 201) {
+				setFormValues({ ...formValues, logo: response.data.imageUrl });
+			} else {
+				alert('Error uploading image');
+			}
+		} catch (error) {
+			console.error(error);
+			alert('Error uploading image');
+		}
+	};
+
+
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		
+		try {
+		const response = await axios.post(`${API_BASE_URL}/`, formValues);
+
+		if (response.status === 201) {
+			alert('Restaurant added successfully');
+		} else {
+			alert('Error adding restaurant');
+		}
+		} catch (error) {
+		console.error(error);
+		alert('Error adding restaurant');
+		}
+	};
 
   return (
 		<div className="container">
@@ -76,7 +100,7 @@ const AddRestaurant = () => {
 							</Link>
 						</div>
 						<h1 className="mb-5">Add a new restaurant</h1>
-						<form onSubmit={handleSubmit} className="row g-3">
+						<form onSubmit={handleSubmit} enctype="multipart/form-data" className="row g-3">
 							<div className="col-md-6 mb-3">
 								<label htmlFor="name" className="form-label">
 									Name:
@@ -147,13 +171,13 @@ const AddRestaurant = () => {
 								<label htmlFor="logo" className="form-label">
 									Logo URL:
 								</label>
-								<input type="url" id="logo" name="logo" className="form-control" value={formValues.logo} onChange={handleChange} />
+								<input type="file" id="logo" name="logo" className="form-control" onChange={handleFileChange} />
 							</div>
 							<div className="col-md-6 mb-3">
 								<label htmlFor="headerImage" className="form-label">
 									Header Image URL:
 								</label>
-								<input type="url" id="headerImage" name="headerImage" className="form-control" value={formValues.headerImage} onChange={handleChange} />
+								<input type="file" id="headerImage" name="headerImage" className="form-control" onChange={handleFileChange} />
 							</div>
 							<div className="mb-3">
 								<button type="submit" className="btn btn-success btn-lg mb-3">

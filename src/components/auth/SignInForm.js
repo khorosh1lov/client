@@ -52,7 +52,7 @@ function SignInForm() {
         localStorage.setItem("userEmail", response.data.user.email);
         clearForm();
         if (localStorage.getItem("role") === "admin") {
-          navigate("/admin", { replace: true });
+          navigate("/user", { replace: true }); // Admin will be added later
         } else {
           navigate("/user", { replace: true });
         }

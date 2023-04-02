@@ -1,11 +1,11 @@
+import './Restaurants.css';
+
 import React, { useEffect, useState } from 'react';
 
 import { API_BASE_URL } from '../../config';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import StarRating from './StarRating';
 import axios from 'axios';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 
 const Restaurant = () => {
@@ -33,16 +33,22 @@ const Restaurant = () => {
 		<div>
 			<div className="container mt-4 mb-4">
 				<div className="row">
-					<div className="col-12 w-100" style={{ backgroundImage: `url(${restaurant.headerImage})` }}>
-						<div className="col-12 d-flex">
-							<div className="mb-2">
+					<div
+						className="col-sm-12 shadow p-3 rounded restaurant-bg"
+						style={{
+							backgroundImage: `url(${restaurant.headerImage})`,
+							backgroundSize: 'cover',
+							backgroundPosition: 'center',
+							backgroundRepeat: 'no-repeat',
+						}}>
+						<div className="col-12 mt-5 mb-5">
+							<div className="mb-3">
 								<Link to="/" className="nav-link fw-bold text-white" aria-current="page">
-									<FontAwesomeIcon icon={faArrowLeft} />
-									&nbsp;back to all Restaurants
+									&larr;&nbsp;back to all Restaurants
 								</Link>
 							</div>
 
-							<h1 className="display-5 mb-4 fw-bold text-white">{restaurant.name}</h1>
+							<h1 className="display-5 mb-3 fw-bold text-white">{restaurant.name}</h1>
 						</div>
 					</div>
 					<div className="col-md-6 col-sm-12">

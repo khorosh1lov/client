@@ -2,6 +2,7 @@ import './Admin.css';
 
 import { faBowlFood, faShop, faUsers } from '@fortawesome/free-solid-svg-icons';
 
+import AllRestaurants from './AllRestaurants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
 import React from "react";
@@ -40,7 +41,7 @@ const AdminDashboard = () => {
 						<h1 className="h2">Dashboard</h1>
 					</div>
 
-					{/* Dash Content here */}
+					<AllRestaurants />
 				</div>
 			</div>
 		</div>

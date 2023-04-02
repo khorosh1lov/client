@@ -32,25 +32,25 @@ const Restaurant = () => {
 	return (
 		<div>
 			<div className="container mt-4 mb-4">
-				<div className="row">
-					<div
-						className="col-sm-12 shadow p-3 rounded restaurant-bg"
-						style={{
-							backgroundImage: `url(${restaurant.headerImage})`,
-							backgroundSize: 'cover',
-							backgroundPosition: 'center',
-							backgroundRepeat: 'no-repeat',
-						}}>
-						<div className="col-12 mt-5 mb-5">
-							<div className="mb-3">
-								<Link to="/" className="nav-link fw-bold text-white" aria-current="page">
-									&larr;&nbsp;back to all Restaurants
-								</Link>
-							</div>
-
-							<h1 className="display-5 mb-3 fw-bold text-white">{restaurant.name}</h1>
+				<div
+					className="col-sm-12 shadow p-5 px-4 mb-4 rounded restaurant-bg"
+					style={{
+						backgroundImage: `url(${restaurant.headerImage})`,
+						backgroundSize: 'cover',
+						backgroundPosition: 'center',
+						backgroundRepeat: 'no-repeat',
+					}}>
+					<div className="col-12 mt-5 mb-5">
+						<div className="mb-3">
+							<Link to="/" className="nav-link fw-bold text-white" aria-current="page">
+								&larr;&nbsp;back to all Restaurants
+							</Link>
 						</div>
+
+						<h1 className="display-5 mb-3 fw-bold text-white">{restaurant.name}</h1>
 					</div>
+				</div>
+				<div className="row">
 					<div className="col-md-6 col-sm-12">
 						<div className="card">
 							<div className="card-body">

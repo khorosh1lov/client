@@ -1,9 +1,9 @@
 .restaurant-bg h1 {
-    text-shadow: 2px 3px 5px black;
+    text-shadow: 2px 3px 2px #111
 }
 
 .restaurant-bg a,
 .restaurant-bg p,
 .restaurant-bg span {
-    text-shadow: 2px 2px 3px #222222;
+    text-shadow: 2px 2px 2px #222;
 }

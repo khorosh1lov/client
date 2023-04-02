@@ -17,20 +17,20 @@ function App() {
   const isAdmin = true; // Add Redux states here
 
   return (
-    <Router>
-      <Header />
-        <Routes>
-          <Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="add-restaurant" element={<AddRestaurant />} />
-          </Route>
-          <Route path="/" element={<Restaurants />} />
-          <Route path="/:id" element={<Restaurant />} />
-          <Route path="/login" element={<SignInRoute />} />
-          <Route path="/signup" element={<SignUpRoute />} />
-          <Route path="/user" element={<UserMenuRoute />} />
-        </Routes>
-    </Router>
+		<Router>
+				<Header />
+				<Routes>
+					<Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
+						<Route index element={<AdminDashboard />} />
+						<Route path="add-restaurant" element={<AddRestaurant />} />
+					</Route>
+					<Route path="/" element={<Restaurants />} />
+					<Route path="/:id" element={<Restaurant />} />
+					<Route path="/login" element={<SignInRoute />} />
+					<Route path="/signup" element={<SignUpRoute />} />
+					<Route path="/user" element={<UserMenuRoute />} />
+				</Routes>
+		</Router>
   );
 }
 

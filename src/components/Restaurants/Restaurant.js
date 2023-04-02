@@ -3,6 +3,7 @@ import './Restaurants.css';
 import React, { useEffect, useState } from 'react';
 
 import { API_BASE_URL } from '../../config';
+import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 import StarRating from './StarRating';
 import axios from 'axios';
@@ -112,6 +113,8 @@ const Restaurant = () => {
 					))}
 				</div>
 			</div>
+
+			<Footer />
 		</div>
 	);
 };

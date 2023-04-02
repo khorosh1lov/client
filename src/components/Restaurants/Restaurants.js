@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { API_BASE_URL } from '../../config';
+import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 import SortRestaurants from './SortRestaurants';
 import StarRating from './StarRating';
@@ -115,6 +116,8 @@ const Restaurants = () => {
 					</div>
 				</div>
 			</div>
+
+			<Footer />
 		</div>
 	);
 };

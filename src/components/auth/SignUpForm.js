@@ -1,4 +1,4 @@
-import "../../styles/SignUpForm.css";
+import "./SignUpForm.css";
 
 import { Link, useNavigate } from "react-router-dom";
 

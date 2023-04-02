@@ -26,7 +26,7 @@ function Header() {
 					</Link>
 					<div className="d-flex flex-row justify-content-end">
 						{localStorage.getItem('isLoggedIn') === 'true' ? (
-							<div class="btn-group" role="group">
+							<div className="btn-group" role="group">
 								{localStorage.getItem('role') === 'admin' ? (
 									<Link type="button" className="btn btn-outline-light" to="/admin">
 										Admin Dashboard
@@ -38,9 +38,6 @@ function Header() {
 								<Link type="button" className="btn btn-outline-danger" to="/" onClick={handleLogout}>
 									Log Out
 								</Link>
-								{/* <button type="button" className="btn btn-outline-danger" onClick={handleLogout}>
-									Log Out
-								</button> */}
 							</div>
 						) : (
 							<div className="d-flex justify-content-end">

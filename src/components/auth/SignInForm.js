@@ -104,7 +104,7 @@ function SignInForm() {
         />
         <div className="col-md-12">
           <span id="passwordHelpInline" className="form-text">
-            Must be at leat 8 characters long.
+            Must be at least 8 characters long.
           </span>
         </div>
         <ErrorPasswordLength password={password} />

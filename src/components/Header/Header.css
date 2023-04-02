@@ -1,0 +1,18 @@
+.navbar-brand {
+  font-family: 'Nanum Pen Script', cursive;
+}
+
+.custom-dropdown {
+  background-color: #343a40;
+}
+
+.custom-dropdown .dropdown-item {
+  color: #ffc107;
+  padding: 0.25rem 1rem;
+  white-space: nowrap;
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background-color: #495057;
+  color: #fff;
+}

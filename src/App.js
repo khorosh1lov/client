@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import AddRestaurant from "./components/Admin/AddRestaurant";
 import AdminDashboard from "./components/Admin/AdminDashboard";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
 import React from "react";
 import Restaurant from "./components/Restaurants/Restaurant";

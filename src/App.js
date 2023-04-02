@@ -19,12 +19,13 @@ function App() {
 			<Header />
 			<Routes>
 				<Route path="/admin/*" element={<AdminRoutes isAdmin={isAdmin} />} />
-				{/* Other routes */}
+
 				<Route path="/" element={<Restaurants />} />
 				<Route path="/:id" element={<Restaurant />} />
 				<Route path="/login" element={<SignInRoute />} />
 				<Route path="/signup" element={<SignUpRoute />} />
 				<Route path="/user" element={<UserMenuRoute />} />
+				{/* Other routes */}
 			</Routes>
 		</Router>
 	);

@@ -18,43 +18,39 @@ function Header() {
   };
 
   return (
-    <header aria-label="Site Header">
-      <nav className="navbar navbar-expand-lg bg-dark fixed-top">
-        <div className="container">
-          <Link className="navbar-brand text-warning fs-2" to="/">
-            DoDelivery
-          </Link>
-          <div className="d-flex flex-row justify-content-end">
-            {localStorage.getItem("role") === "admin" ? (
-              <div>
-                <button className="btn btn-light me-2">
-                  <Link className="nav-link text-dark" to="/admin">
-                    Admin Dashboard
-                  </Link>
-                </button>
-              </div>
-            ) : null}
-
-            {localStorage.getItem("isLoggedIn") === "true" ? (
-              <div className="me-2">
-                <button className="btn btn-warning me-2">
-                  <Link className="nav-link text-dark" to="/user">
-                    User Menu
-                  </Link>
-                </button>
-                <button className="btn btn-danger" onClick={handleLogout}>
-                  Log Out
-                </button>
-              </div>
-            ) : (
-              <div className="d-flex justify-content-end">
-                <AuthButtons />
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
-    </header>
+		<header aria-label="Site Header">
+			<nav className="navbar navbar-expand-lg bg-dark fixed-top">
+				<div className="container">
+					<Link className="navbar-brand text-warning fs-2" to="/">
+						DoDelivery
+					</Link>
+					<div className="d-flex flex-row justify-content-end">
+						{localStorage.getItem('isLoggedIn') === 'true' ? (
+							<div class="btn-group" role="group">
+								{localStorage.getItem('role') === 'admin' ? (
+									<Link type="button" className="btn btn-outline-light" to="/admin">
+										Admin Dashboard
+									</Link>
+								) : null}
+								<Link type="button" className="btn btn-outline-warning" to="/user">
+									User Menu
+								</Link>
+								<Link type="button" className="btn btn-outline-danger" to="/" onClick={handleLogout}>
+									Log Out
+								</Link>
+								{/* <button type="button" className="btn btn-outline-danger" onClick={handleLogout}>
+									Log Out
+								</button> */}
+							</div>
+						) : (
+							<div className="d-flex justify-content-end">
+								<AuthButtons />
+							</div>
+						)}
+					</div>
+				</div>
+			</nav>
+		</header>
   );
 }
 

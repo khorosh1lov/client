@@ -19,6 +19,8 @@
 .admin-nav-link:focus,
 .admin-nav-link:hover svg,
 .admin-nav-link:active svg,
-.admin-nav-link:focus svg {
+.admin-nav-link:focus svg,
+.admin-nav-link.active,
+.admin-nav-link.active svg {
     color: #b03c3c;
 }

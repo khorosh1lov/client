@@ -1,37 +1,33 @@
-import "./styles/App.css";
+import './styles/App.css';
 
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import AddRestaurant from "./components/Admin/AddRestaurant";
-import AdminDashboard from "./components/Admin/AdminDashboard";
-import Header from "./components/Header/Header";
-import ProtectedRoute from "./components/ProtectedRoute";
-import React from "react";
-import Restaurant from "./components/Restaurants/Restaurant";
-import Restaurants from "./components/Restaurants/Restaurants";
-import SignInRoute from "./routes/SignInRoute";
-import SignUpRoute from "./routes/SignUpRoute";
-import UserMenuRoute from "./routes/UserMenuRoute";
+import AdminRoutes from './components/Admin/AdminRoutes';
+import Header from './components/Header/Header';
+import React from 'react';
+import Restaurant from './components/Restaurants/Restaurant';
+import Restaurants from './components/Restaurants/Restaurants';
+import SignInRoute from './routes/SignInRoute';
+import SignUpRoute from './routes/SignUpRoute';
+import UserMenuRoute from './routes/UserMenuRoute';
 
 function App() {
-  const isAdmin = true; // Add Redux states here
+	const isAdmin = true; // Add Redux states here
 
-  return (
+	return (
 		<Router>
-				<Header />
-				<Routes>
-					<Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
-						<Route index element={<AdminDashboard />} />
-						<Route path="add-restaurant" element={<AddRestaurant />} />
-					</Route>
-					<Route path="/" element={<Restaurants />} />
-					<Route path="/:id" element={<Restaurant />} />
-					<Route path="/login" element={<SignInRoute />} />
-					<Route path="/signup" element={<SignUpRoute />} />
-					<Route path="/user" element={<UserMenuRoute />} />
-				</Routes>
+			<Header />
+			<Routes>
+				<Route path="/admin/*" element={<AdminRoutes isAdmin={isAdmin} />} />
+				{/* Other routes */}
+				<Route path="/" element={<Restaurants />} />
+				<Route path="/:id" element={<Restaurant />} />
+				<Route path="/login" element={<SignInRoute />} />
+				<Route path="/signup" element={<SignUpRoute />} />
+				<Route path="/user" element={<UserMenuRoute />} />
+			</Routes>
 		</Router>
-  );
+	);
 }
 
 export default App;

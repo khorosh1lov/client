@@ -13,10 +13,15 @@ const Restaurants = () => {
 	const [restaurants, setRestaurants] = useState([]);
 	const [sortType, setSortType] = useState('');
 	const [sortOrder, setSortOrder] = useState('asc');
+	const [searchQuery, setSearchQuery] = useState('');
 
 	const handleSort = (type, order) => {
 		setSortType(type);
 		setSortOrder(order);
+	};
+
+	const handleSearch = (e) => {
+		setSearchQuery(e.target.value);
 	};
 
 	useEffect(() => {
@@ -45,14 +50,21 @@ const Restaurants = () => {
 		return sortOrder === 'asc' ? comparison : -comparison;
 	});
 
-	const featuredRestaurants = sortedRestaurants.filter((restaurant) => restaurant.rating === 5).slice(0, 4);
-	const otherRestaurants = sortedRestaurants.slice(4);
+	const filteredRestaurants = sortedRestaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+	const featuredRestaurants = filteredRestaurants.filter((restaurant) => restaurant.rating === 5).slice(0, 4);
+	const otherRestaurants = filteredRestaurants.slice(4);
 
 	return (
 		<div>
 			<div className="container">
-				<div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-					<h1 className="mt-4 mb-4 fw-bolder">Restaurants</h1>
+				<div className="d-flex gap-4 justify-content-left flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+					<div className="d-flex mt-4 mb-4">
+						<h1 className="fw-bolder">Restaurants</h1>
+					</div>
+					<div className="input-group w-50">
+						<input type="search" className="form-control" placeholder="Search..." value={searchQuery} onChange={handleSearch} />
+					</div>
 					<div className="btn-toolbar mb-2 mb-md-0">
 						<SortRestaurants className="btn-group me-2" handleSort={handleSort} sortOrder={sortOrder} sortType={sortType} />
 					</div>

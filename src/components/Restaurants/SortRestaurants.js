@@ -23,12 +23,12 @@ const SortRestaurants = memo(({ handleSort }) => {
 		<div className="d-flex">
 			<div className="me-2">
 				<button className="btn btn-outline-secondary" onClick={handleRatingSort}>
-					Rating: {ratingLabel}
+					{ratingLabel}
 				</button>
 			</div>
 			<div>
 				<button className="btn btn-outline-secondary" onClick={handleAlphabetSort}>
-					Order: {alphabetLabel}
+					{alphabetLabel}
 				</button>
 			</div>
 		</div>

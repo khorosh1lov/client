@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 import { API_BASE_URL } from "../../../config";
+import Input from "../../Forms/Input";
+import TelInput from '../../Forms/TelInput';
 import axios from "axios";
 
 const AddRestaurant = () => {
@@ -92,12 +94,8 @@ const AddRestaurant = () => {
 				<div className="mt-2">
 					<h2 className="mb-5">Add a new restaurant</h2>
 					<form onSubmit={handleSubmit} encType="multipart/form-data" className="row g-3">
-						<div className="col-md-6 col-sm-12 mb-3">
-							<label htmlFor="name" className="form-label">
-								Restaurant Name
-							</label>
-							<input type="text" id="name" name="name" className="form-control" value={formValues.name} onChange={handleChange} required placeholder="Ex. Jonny Place" />
-						</div>
+						<Input classes="col-md-6 col-sm-12 mb-3" label="Name" type="text" name="name" id="name" value={formValues.name} placeholder="Ex. Jonny Place" onChange={handleChange} />
+						
 						<div className="col-md-6 col-sm-12 mb-3">
 							<label htmlFor="cuisine" className="form-label">
 								Cuisine

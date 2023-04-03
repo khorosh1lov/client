@@ -1,3 +1,5 @@
+import './AdminAppStats.css';
+
 import React, { useEffect, useState } from 'react';
 
 import { API_BASE_URL } from '../../../config';
@@ -14,7 +16,6 @@ const AdminAppStats = () => {
 				const response = await axios.get(`${API_BASE_URL}/count`);
 				setTotalRestaurants(response.data);
 
-				// Replace the following line with the actual API request to fetch the data per day
 				const dailyDataResponse = await axios.get(`${API_BASE_URL}/dailyData`);
 
 				const data = dailyDataResponse.data.map((item) => item.total);
@@ -32,7 +33,7 @@ const AdminAppStats = () => {
 		<div className="statistic">
 			<h2>Basic Statistic</h2>
 			<p>Total Restaurants: {totalRestaurants}</p>
-			{chartData.data.length > 0 && chartData.labels.length > 0 ? <LineChart data={chartData.data} labels={chartData.labels} /> : <p>Loading chart data...</p>}
+			<div className="total-chart">{chartData.data.length > 0 && chartData.labels.length > 0 ? <LineChart data={chartData.data} labels={chartData.labels} /> : <p>Loading chart data...</p>}</div>
 		</div>
 	);
 };

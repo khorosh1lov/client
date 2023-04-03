@@ -1,31 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { API_BASE_URL } from "../../../config";
-import Input from "../../forms/Input";
-import axios from "axios";
+import { API_BASE_URL } from '../../../config';
+import Input from '../../forms/Input';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const AddRestaurant = () => {
-	const [formValues, setFormValues] = useState({
-		name: '',
-		cuisine: '',
-		address: {
-			street: '',
-			city: '',
-			state: '',
-			zip: '',
-		},
-		contactInfo: {
-			phone: '',
-			email: '',
-		},
-		workingDays: '',
-		workingHours: {
-			from: '',
-			to: '',
-		},
-		logo: '',
-		headerImage: '',
-	});
+const EditRestaurant = () => {
+	const [formValues, setFormValues] = useState(null);
+	const { id } = useParams();
+	console.log('Restaurant ID:', id);
+
+	useEffect(() => {
+		const fetchRestaurant = async () => {
+			try {
+				const response = await axios.get(`${API_BASE_URL}/${id}`);
+				console.log('Fetched restaurant data:', response.data);
+				setFormValues({ ...response.data });
+			} catch (error) {
+				console.error('Error fetching restaurant:', error);
+			}
+		};
+
+		fetchRestaurant();
+	}, [id]);
+	
+
+	if (!formValues) {
+		console.log('Form values state:', formValues);
+		return <div>Loading...</div>;
+	}
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -71,19 +74,18 @@ const AddRestaurant = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(formValues);
 
 		try {
-			const response = await axios.post(`${API_BASE_URL}/`, formValues);
+			const response = await axios.put(`${API_BASE_URL}/${id}`, formValues);
 
-			if (response.status === 201) {
-				alert('Restaurant added successfully');
+			if (response.status === 200) {
+				alert('Restaurant updated successfully');
 			} else {
-				alert('Error adding restaurant');
+				alert('Error updating restaurant');
 			}
 		} catch (error) {
 			console.error(error);
-			alert('Error adding restaurant');
+			alert('Error updating restaurant');
 		}
 	};
 
@@ -91,10 +93,15 @@ const AddRestaurant = () => {
 		<section className="d-flex justify-content-left">
 			<div className="col-sm-12 col-md-10 col-lg-8">
 				<div className="mt-2">
-					<h2 className="mb-5">Add a new restaurant</h2>
+					<h2 className="mb-5">Edit Restaurant</h2>
 					<form onSubmit={handleSubmit} encType="multipart/form-data" className="row g-3">
-						<Input classes="col-md-6 col-sm-12 mb-3" label="Name" type="text" name="name" id="name" value={formValues.name} placeholder="Ex. Jonny Place" onChange={handleChange} />
-						
+						<div className="col-md-6 col-sm-12 mb-3">
+							<label htmlFor="name" className="form-label">
+								Name
+							</label>
+							<input type="text" id="name" name="name" className="form-control" value={formValues.name} onChange={handleChange} required placeholder="Ex. American" />
+						</div>
+
 						<div className="col-md-6 col-sm-12 mb-3">
 							<label htmlFor="cuisine" className="form-label">
 								Cuisine
@@ -181,7 +188,7 @@ const AddRestaurant = () => {
 						</div>
 						<div className="mb-3">
 							<button type="submit" className="btn btn-success btn-lg mb-3">
-								Add Restaurant
+								Update Restaurant
 							</button>
 						</div>
 					</form>
@@ -191,4 +198,4 @@ const AddRestaurant = () => {
 	);
 };
 
-export default AddRestaurant;
+export default EditRestaurant;

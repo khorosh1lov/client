@@ -24,3 +24,7 @@
 .admin-nav-link.active svg {
     color: #b03c3c;
 }
+
+.sub-list {
+    list-style: none;
+}

@@ -32,14 +32,17 @@ function AllRestaurants() {
   return (
 		<div>
 			{restaurants.map((restaurant) => (
-				<div key={restaurant._id} className="p-2 mb-3 border border rounded-2 d-flex justify-content-between align-content-center align-items-center">
-					<div className="d-flex ">
-						<Link to={`/${restaurant._id}`} target="_blank">
+				<div key={restaurant._id} className="p-3 mb-3 border border rounded-2 d-flex justify-content-between align-content-center align-items-center">
+					<div className="d-flex">
+						<Link to={`/${restaurant._id}`} target="_blank" className="fs-5">
 							{restaurant.name}
 						</Link>
 					</div>
 					<div className="d-flex">
-						<button className="btn btn-outline-danger" onClick={() => handleDelete(restaurant._id)}>
+						<Link to={`/admin/edit-restaurant/${restaurant._id}`} className="btn btn-warning mx-2">
+							Edit
+						</Link>
+						<button className="btn btn-danger" onClick={() => handleDelete(restaurant._id)}>
 							Delete
 						</button>
 					</div>

@@ -1,7 +1,7 @@
 import './AdminDashboard.css';
 
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { faBowlFood, faChartLine, faShop, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faBowlFood, faChartLine, faPlus, faShop, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
@@ -27,13 +27,16 @@ const AdminDashboard = () => {
 									<FontAwesomeIcon icon={faShop} className="feather feather-home align-text-center" />
 									&nbsp;All restaurants
 								</Link>
+								<ul className="sub-list px-4">
+									<li className="nav-item">
+										<Link to="/admin/add-restaurant" className={`admin-nav-link nav-link fs-5 ${isActive('/admin/add-restaurant') ? 'active' : ''}`} aria-current="page">
+											<FontAwesomeIcon icon={faPlus} size="xs" className="feather feather-home align-text-center" />
+											&nbsp;Add new restaurant
+										</Link>
+									</li>
+								</ul>
 							</li>
-							<li className="nav-item">
-								<Link to="/admin/add-restaurant" className={`admin-nav-link nav-link fs-5 fw-bold ${isActive('/admin/add-restaurant') ? 'active' : ''}`} aria-current="page">
-									<FontAwesomeIcon icon={faShop} className="feather feather-home align-text-center" />
-									&nbsp;Add new restaurant
-								</Link>
-							</li>
+
 							<li className="nav-item">
 								<Link to="/" className="admin-nav-link nav-link fs-5 fw-bold" aria-current="page">
 									<FontAwesomeIcon icon={faBowlFood} className="feather feather-home align-text-center" />

@@ -5,6 +5,7 @@ import AddRestaurant from './Control/AddRestaurant';
 import AdminAppStats from './Control/AdminAppStats';
 import AdminDashboard from './AdminDashboard';
 import AllRestaurants from './Control/AllRestaurants';
+import EditRestaurant from './Control/EditRestaurant';
 
 const AdminRoutes = ({ isAdmin }) => {
 	const navigate = useNavigate();
@@ -21,6 +22,7 @@ const AdminRoutes = ({ isAdmin }) => {
 				<Route index element={<AdminAppStats />} />
 				<Route path="restaurants" element={<AllRestaurants />} />
 				<Route path="add-restaurant" element={<AddRestaurant />} />
+				<Route path="edit-restaurant/:id" element={<EditRestaurant />} />
 				{/* Add other routes here */}
 			</Route>
 		</Routes>

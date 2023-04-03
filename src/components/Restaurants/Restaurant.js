@@ -11,13 +11,19 @@ import { useParams } from 'react-router-dom';
 
 const Restaurant = () => {
 	const [restaurant, setRestaurant] = useState(null);
+	const [averageRating, setAverageRating] = useState(null);
+	const [userRating, setUserRating] = useState(0);
 	const { id } = useParams();
+
+	const loggedInUserId = localStorage.getItem('userId');
 
 	useEffect(() => {
 		const fetchRestaurant = async () => {
 			try {
 				const response = await axios.get(`${API_BASE_URL}/${id}`);
-				setRestaurant(response.data);
+				const fetchedRestaurant = response.data;
+				setRestaurant(fetchedRestaurant);
+				setAverageRating(calculateAverageRating(fetchedRestaurant.ratings));
 			} catch (error) {
 				console.error('Error fetching restaurant:', error);
 			}
@@ -25,10 +31,38 @@ const Restaurant = () => {
 
 		fetchRestaurant();
 	}, [id]);
+	
+	const calculateAverageRating = (ratings) => {
+		if (ratings.length === 0) return 0;
+		const sum = ratings.reduce((total, ratingObj) => total + ratingObj.rating, 0);
+		return sum / ratings.length;
+	};
 
 	if (!restaurant) {
 		return <div>Loading...</div>;
 	}
+
+	const handleUserRatingChange = (newRating) => {
+		setUserRating(newRating);
+	};
+
+	const submitRating = async (rating) => {
+		try {
+			const response = await axios.post(`${API_BASE_URL}/${id}/rating/submit`, { userId: loggedInUserId, rating });
+
+			if (response.status === 200) {
+				// Update the restaurant's average rating
+				const newAverageRating = calculateAverageRating(response.data.ratings);
+				setAverageRating(newAverageRating);
+				alert('Rating submitted successfully');
+			} else {
+				alert('Error submitting rating');
+			}
+		} catch (error) {
+			console.error('Error submitting rating:', error);
+			alert('Error submitting rating');
+		}
+	};
 
 	return (
 		<div>
@@ -81,9 +115,13 @@ const Restaurant = () => {
 										<span className="fw-bold">Email: </span>
 										{restaurant.contactInfo.email}
 									</p>
-									<div className="mb-2">
+									<div className="mb-2 d-flex gap-2 align-items-center">
 										<span className="fw-bold">Rating: </span>
-										<StarRating rating={restaurant.rating} />
+										<StarRating rating={userRating} interactive onRatingChange={handleUserRatingChange} />
+
+										<button className="btn btn-sm btn-success" onClick={() => submitRating(userRating)}>
+											Submit Rating
+										</button>
 									</div>
 								</div>
 							</div>

@@ -7,3 +7,8 @@
 .restaurant-bg span {
     text-shadow: 2px 2px 2px #222;
 }
+
+.star-rating span,
+.star-rating span svg {
+    cursor: pointer;
+}

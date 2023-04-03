@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import ErrorPasswordLength from "../Forms/ErrorPasswordLength";
-import ErrorRequiredMessage from "../Forms/ErrorRequiredMessage";
-import Input from "../Forms/Input";
+import ErrorPasswordLength from "../forms/ErrorPasswordLength";
+import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
+import Input from "../forms/Input";
 import axios from "axios";
 import { useState } from "react";
 

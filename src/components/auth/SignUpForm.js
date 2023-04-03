@@ -2,11 +2,11 @@ import "./SignUpForm.css";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import ErrorPasswordLength from "../Forms/ErrorPasswordLength";
-import ErrorPasswordMatch from "../Forms/ErrorPasswordMatch";
-import ErrorRequiredMessage from "../Forms/ErrorRequiredMessage";
-import Input from "../Forms/Input";
-import TelInput from "../Forms/TelInput";
+import ErrorPasswordLength from "../forms/ErrorPasswordLength";
+import ErrorPasswordMatch from "../forms/ErrorPasswordMatch";
+import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
+import Input from "../forms/Input";
+import TelInput from "../forms/TelInput";
 import axios from "axios";
 import { useState } from "react";
 

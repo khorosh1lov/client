@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import { API_BASE_URL } from "../../../config";
-import Input from "../../Forms/Input";
-import TelInput from '../../Forms/TelInput';
+import Input from "../../forms/Input";
+import TelInput from '../../forms/TelInput';
 import axios from "axios";
 
 const AddRestaurant = () => {

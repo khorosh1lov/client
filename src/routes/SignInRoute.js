@@ -1,4 +1,4 @@
-import SignInForm from "../components/Auth/SignInForm";
+import SignInForm from "../components/auth/SignInForm";
 
 function SignInRoute() {
   return (

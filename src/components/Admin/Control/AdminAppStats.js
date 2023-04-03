@@ -12,7 +12,7 @@ const AdminAppStats = () => {
 
 	const fillMissingDates = (data, numDays) => {
 		const startDate = new Date();
-		startDate.setDate(startDate.getDate() - numDays);
+		startDate.setDate(startDate.getDate() - numDays); // Set startDate to 10 days ago
 		const filledData = [];
 
 		for (let i = 0; i < numDays; i++) {
@@ -38,7 +38,7 @@ const AdminAppStats = () => {
 				setTotalRestaurants(response.data);
 
 				const dailyDataResponse = await axios.get(`${API_BASE_URL}/dailyData`);
-				const filledData = fillMissingDates(dailyDataResponse.data, 10);
+				const filledData = fillMissingDates(dailyDataResponse.data, 9);
 
 				const data = filledData.map((item) => item.total);
 				const labels = filledData.map((item) => item.date);

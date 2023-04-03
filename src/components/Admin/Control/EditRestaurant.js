@@ -76,7 +76,7 @@ const EditRestaurant = () => {
 		event.preventDefault();
 
 		try {
-			const response = await axios.put(`${API_BASE_URL}/${id}`, formValues);
+			const response = await axios.put(`${API_BASE_URL}/admin/${id}`, formValues);
 
 			if (response.status === 200) {
 				alert('Restaurant updated successfully');

@@ -74,7 +74,7 @@ const AddRestaurant = () => {
 		console.log(formValues);
 
 		try {
-			const response = await axios.post(`${API_BASE_URL}/`, formValues);
+			const response = await axios.post(`${API_BASE_URL}/admin/`, formValues);
 
 			if (response.status === 201) {
 				alert('Restaurant added successfully');

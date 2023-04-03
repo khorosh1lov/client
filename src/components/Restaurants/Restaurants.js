@@ -52,8 +52,16 @@ const Restaurants = () => {
 
 	const filteredRestaurants = sortedRestaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
-	const featuredRestaurants = filteredRestaurants.filter((restaurant) => restaurant.rating === 5).slice(0, 4);
-	const otherRestaurants = filteredRestaurants.slice(4);
+	const featuredRestaurants = [];
+	const otherRestaurants = [];
+
+	filteredRestaurants.forEach((restaurant) => {
+		if (featuredRestaurants.length < 4 && restaurant.rating === 5) {
+			featuredRestaurants.push(restaurant);
+		} else {
+			otherRestaurants.push(restaurant);
+		}
+	});
 
 	return (
 		<div>

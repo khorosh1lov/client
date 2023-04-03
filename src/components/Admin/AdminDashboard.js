@@ -23,6 +23,12 @@ const AdminDashboard = () => {
 								</Link>
 							</li>
 							<li className="nav-item">
+								<Link to="/admin/restaurants" className={`admin-nav-link nav-link fs-5 fw-bold ${isActive('/admin/restaurants') ? 'active' : ''}`} aria-current="page">
+									<FontAwesomeIcon icon={faShop} className="feather feather-home align-text-center" />
+									&nbsp;All restaurants
+								</Link>
+							</li>
+							<li className="nav-item">
 								<Link to="/admin/add-restaurant" className={`admin-nav-link nav-link fs-5 fw-bold ${isActive('/admin/add-restaurant') ? 'active' : ''}`} aria-current="page">
 									<FontAwesomeIcon icon={faShop} className="feather feather-home align-text-center" />
 									&nbsp;Add new restaurant
@@ -47,7 +53,7 @@ const AdminDashboard = () => {
 
 				<div className="col-sm-12 col-md-8 col-lg-9 ms-sm-auto px-md-4">
 					<div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-						<h1 className="h2">Dashboard</h1>
+						<h1 className="h1">Dashboard</h1>
 					</div>
 
 					<Outlet />

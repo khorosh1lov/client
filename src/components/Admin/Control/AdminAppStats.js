@@ -10,6 +10,27 @@ const AdminAppStats = () => {
 	const [totalRestaurants, setTotalRestaurants] = useState(0);
 	const [chartData, setChartData] = useState({ data: [], labels: [] });
 
+	const fillMissingDates = (data, numDays) => {
+		const startDate = new Date();
+		startDate.setDate(startDate.getDate() - numDays);
+		const filledData = [];
+
+		for (let i = 0; i < numDays; i++) {
+			const dateStr = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
+			const found = data.find((item) => item.date === dateStr);
+
+			if (found) {
+				filledData.push(found);
+			} else {
+				filledData.push({ date: dateStr, total: 0 });
+			}
+
+			startDate.setDate(startDate.getDate() + 1);
+		}
+
+		return filledData;
+	};
+
 	useEffect(() => {
 		const fetchRestaurants = async () => {
 			try {
@@ -17,9 +38,10 @@ const AdminAppStats = () => {
 				setTotalRestaurants(response.data);
 
 				const dailyDataResponse = await axios.get(`${API_BASE_URL}/dailyData`);
+				const filledData = fillMissingDates(dailyDataResponse.data, 10);
 
-				const data = dailyDataResponse.data.map((item) => item.total);
-				const labels = dailyDataResponse.data.map((item) => item.date);
+				const data = filledData.map((item) => item.total);
+				const labels = filledData.map((item) => item.date);
 				setChartData({ data, labels });
 			} catch (error) {
 				console.error('Error fetching Total restaurants:', error);

@@ -4,6 +4,7 @@ import ErrorPasswordLength from "../forms/ErrorPasswordLength";
 import ErrorRequiredMessage from "../forms/ErrorRequiredMessage";
 import Input from "../forms/Input";
 import axios from "axios";
+import jwtDecode from 'jwt-decode';
 import { useState } from "react";
 
 function SignInForm() {
@@ -37,43 +38,44 @@ function SignInForm() {
   };
   
   const handleSubmit = async (e) => {
-    e.preventDefault();
+		e.preventDefault();
 
-    const userData = {
-      email: email.value,
-      password: password.value,
-    };
-    await axios
-      .post("https://deliveryapp-sever.herokuapp.com/auth/login", userData)
-      .then((response) => {
-        console.log(response.status, response.data);
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userId', response.data._id);
-        localStorage.setItem('userName', response.data.name);
-        localStorage.setItem('role', response.data.role);
-        localStorage.setItem('userEmail', response.data.email);
-        clearForm();
-        if (localStorage.getItem("role") === "admin") {
-          navigate("/admin", { replace: true });
-        } else {
-          navigate("/user", { replace: true });
-        }
-      })
-      .catch((err) => {
-        localStorage.setItem("isLoggedIn", "false");
-        localStorage.removeItem("userName");
-        if (err.response) {
-          setError(true);
-          console.log(err.response);
-          console.log("Server responded");
-        } else if (err.request) {
-          console.log("network error");
-        } else {
-          console.log(err);
-        }
-      });
+		const userData = {
+			email: email.value,
+			password: password.value,
+		};
+
+		await axios
+			.post('https://deliveryapp-sever.herokuapp.com/auth/login', userData)
+			.then((response) => {
+				console.log(response.status, response.data);
+				localStorage.setItem('token', response.data.token);
+				clearForm();
+
+				const decodedToken = jwtDecode(response.data.token);
+				const role = decodedToken.role;
+
+				if (role === 'admin') {
+					navigate('/admin', { replace: true });
+				} else {
+					navigate('/user', { replace: true });
+				}
+			})
+			.catch((err) => {
+				localStorage.removeItem('token');
+				setError(true);
+
+				if (err.response) {
+					console.log(err.response);
+					console.log('Server responded');
+				} else if (err.request) {
+					console.log('network error');
+				} else {
+					console.log(err);
+				}
+			});
   };
+
 
   return (
     <section>

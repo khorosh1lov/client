@@ -48,7 +48,7 @@ const Restaurant = () => {
 
 	const submitRating = async (rating) => {
 		try {
-			const response = await axios.post(`${API_BASE_URL}/user/${loggedInUserId}/restaurant/${id}/rating/submit`, { userId: loggedInUserId, rating });
+			const response = await axios.post(`${API_BASE_URL}/${id}/rating/submit`, { userId: loggedInUserId, rating });
 
 			if (response.status === 200) {
 				const newAverageRating = calculateAverageRating(response.data.ratings);

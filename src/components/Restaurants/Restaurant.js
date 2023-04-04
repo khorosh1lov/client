@@ -48,10 +48,9 @@ const Restaurant = () => {
 
 	const submitRating = async (rating) => {
 		try {
-			const response = await axios.post(`${API_BASE_URL}/user/${id}/rating/submit`, { userId: loggedInUserId, rating });
+			const response = await axios.post(`${API_BASE_URL}/${id}/rating/submit`, { userId: loggedInUserId, rating });
 
 			if (response.status === 200) {
-				// Update the restaurant's average rating
 				const newAverageRating = calculateAverageRating(response.data.ratings);
 				setAverageRating(newAverageRating);
 				alert('Rating submitted successfully');
@@ -63,6 +62,7 @@ const Restaurant = () => {
 			alert('Error submitting rating');
 		}
 	};
+
 
 	return (
 		<div>

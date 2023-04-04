@@ -47,10 +47,10 @@ function SignInForm() {
       .then((response) => {
         console.log(response.status, response.data);
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem('userId', response.data.user._id);
-        localStorage.setItem("userName", response.data.user.name);
-        localStorage.setItem("role", response.data.user.role);
-        localStorage.setItem("userEmail", response.data.user.email);
+        localStorage.setItem('userId', response.data._id);
+        localStorage.setItem('userName', response.data.name);
+        localStorage.setItem('role', response.data.role);
+        localStorage.setItem('userEmail', response.data.email);
         clearForm();
         if (localStorage.getItem("role") === "admin") {
           navigate("/admin", { replace: true });

@@ -1,6 +1,7 @@
 {
   "short_name": "DoDelivery",
   "name": "DoDelivery App",
+  "description": "Application was developed as Diploma project of the Friendly_JS group for RedRover.school",
   "icons": [
     {
       "src": "favicon.ico",
@@ -26,5 +27,6 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#439230",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "orientation": "portrait"
 }

@@ -6,9 +6,8 @@ import ReactDOM from "react-dom/client";
 
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', () => {
-		const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
 		navigator.serviceWorker
-			.register(publicUrl.pathname + 'service-worker.js')
+			.register('service-worker.js')
 			.then((registration) => {
 				console.log('Service Worker registered: ', registration);
 			})

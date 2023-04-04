@@ -116,8 +116,13 @@ const Restaurant = () => {
 										<span className="fw-bold">Email: </span>
 										{restaurant.contactInfo.email}
 									</p>
+									<div className="mb-2">
+										<span className="fw-bold">Average Rating: </span>
+										<StarRating rating={averageRating} />
+									</div>
+
 									<div className="mb-2 d-flex gap-2 align-items-center">
-										<span className="fw-bold">Rating: </span>
+										<span className="fw-bold">Your Rating: </span>
 										<StarRating rating={userRating} interactive onRatingChange={handleUserRatingChange} />
 
 										<button className="btn btn-sm btn-success" onClick={() => submitRating(userRating)}>

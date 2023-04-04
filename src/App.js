@@ -10,16 +10,21 @@ import Restaurants from './components/Restaurants/Restaurants';
 import SignInRoute from './routes/SignInRoute';
 import SignUpRoute from './routes/SignUpRoute';
 import UserMenuRoute from './routes/UserMenuRoute';
+import jwtDecode from 'jwt-decode';
 
 function App() {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	useEffect(() => {
-		const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-		const role = localStorage.getItem('role');
-		setIsLoggedIn(loggedIn);
-		setIsAdmin(loggedIn && role === 'admin');
+		const token = localStorage.getItem('token');
+		if (token) {
+			const decodedToken = jwtDecode(token);
+			const loggedIn = true;
+			const role = decodedToken.role;
+			setIsLoggedIn(loggedIn);
+			setIsAdmin(loggedIn && role === 'admin');
+		}
 	}, []);
 
 	return (

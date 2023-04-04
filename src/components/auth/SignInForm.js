@@ -35,6 +35,7 @@ function SignInForm() {
     setEmail({ value: "", isTouched: false });
     setPassword({ value: "", isTouched: false });
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,7 +47,8 @@ function SignInForm() {
       .post("https://deliveryapp-sever.herokuapp.com/auth/login", userData)
       .then((response) => {
         console.log(response.status, response.data);
-        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userId', response.data._id);
         localStorage.setItem('userName', response.data.name);
         localStorage.setItem('role', response.data.role);

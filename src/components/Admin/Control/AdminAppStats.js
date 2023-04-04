@@ -11,8 +11,12 @@ const AdminAppStats = () => {
 	const [chartData, setChartData] = useState({ data: [], labels: [] });
 
 	const fillMissingDates = (data, numDays) => {
-		const startDate = new Date();
-		startDate.setDate(startDate.getDate() - numDays); // Set startDate to 10 days ago
+		const today = new Date();
+		today.setHours(0, 0, 0, 0); // Set the time to the start of the day
+
+		const startDate = new Date(today);
+		startDate.setDate(startDate.getDate() - (numDays - 1)); // Set startDate to 9 days ago
+
 		const filledData = [];
 
 		for (let i = 0; i < numDays; i++) {
@@ -30,6 +34,8 @@ const AdminAppStats = () => {
 
 		return filledData;
 	};
+
+
 
 	useEffect(() => {
 		const fetchRestaurants = async () => {

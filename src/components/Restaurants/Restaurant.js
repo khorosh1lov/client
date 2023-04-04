@@ -48,7 +48,7 @@ const Restaurant = () => {
 
 	const submitRating = async (rating) => {
 		try {
-			const response = await axios.post(`${API_BASE_URL}/${loggedInUserId}/restaurant/${id}/rating/submit`, { rating });
+			const response = await axios.post(`${API_BASE_URL}/${loggedInUserId}/${id}/rating/submit`, { rating });
 
 			if (response.status === 200) {
 				// Update the restaurant's average rating

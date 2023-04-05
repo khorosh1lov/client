@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../../config';
 import { Link } from 'react-router-dom';
 import StarRating from './StarRating';
-import DishList from '../DishList/DishList';
+import DishList from '../Dishes/DishList';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 

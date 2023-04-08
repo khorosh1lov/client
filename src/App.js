@@ -12,13 +12,15 @@ import Restaurants from "./components/Restaurants/Restaurants";
 import SignInRoute from "./routes/SignInRoute";
 import SignUpRoute from "./routes/SignUpRoute";
 import UserMenuRoute from "./routes/UserMenuRoute";
+import { CartProvider } from "./components/withCart";
 
 function App() {
   const isAdmin = true; // Add Redux states here
 
   return (
-    <Router>
-      <Header />
+    <CartProvider>
+      <Router>
+        <Header />
         <Routes>
           <Route path="/admin/*" element={<ProtectedRoute isAdmin={isAdmin} />}>
             <Route index element={<AdminDashboard />} />
@@ -30,7 +32,8 @@ function App() {
           <Route path="/signup" element={<SignUpRoute />} />
           <Route path="/user" element={<UserMenuRoute />} />
         </Routes>
-    </Router>
+      </Router>
+    </CartProvider>
   );
 }
 

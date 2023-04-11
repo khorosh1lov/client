@@ -3,13 +3,12 @@ import "./Restaurants.css";
 import React, { useEffect, useState } from "react";
 
 import { API_BASE_URL } from '../../config';
+import DishList from "../Dishes/DishList";
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 import StarRating from './StarRating';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import DishList from "../Dishes/DishList";
-
 
 const Restaurant = () => {
 	const [restaurant, setRestaurant] = useState(null);
@@ -138,7 +137,7 @@ const Restaurant = () => {
 				</div>
 			</div>
       
-      <DishList restaurant={restaurant} />
+      		<DishList restaurant={restaurant} />
       
 			<Footer />
 		</div>

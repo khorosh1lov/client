@@ -1,6 +1,6 @@
-import './Restaurants.css';
+import "./Restaurants.css";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 import { API_BASE_URL } from '../../config';
 import Footer from '../Footer/Footer';
@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import StarRating from './StarRating';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import DishList from "../Dishes/DishList";
+
 
 const Restaurant = () => {
 	const [restaurant, setRestaurant] = useState(null);
@@ -38,9 +40,9 @@ const Restaurant = () => {
 		return sum / ratings.length;
 	};
 
-	if (!restaurant) {
-		return <div>Loading...</div>;
-	}
+  if (!restaurant) {
+    return <div>Loading...</div>;
+  }
 
 	const handleUserRatingChange = (newRating) => {
 		setUserRating(newRating);
@@ -135,29 +137,9 @@ const Restaurant = () => {
 					</div>
 				</div>
 			</div>
-
-			<div className="container mb-4">
-				<h2 className="mt-4">Dishes</h2>
-				<div className="row">
-					{restaurant.dishes.map((dish) => (
-						<div key={dish._id} className="col-md-4">
-							<div className="card mt-3">
-								<img src={dish.image} alt={dish.name} className="card-img-top" />
-								<div className="card-body">
-									<h4 className="card-title">{dish.name}</h4>
-									<p className="card-text">
-										<span className="fw-bold">Price: </span>${dish.price}
-										<br />
-										<span className="fw-bold">Description: </span>
-										{dish.description}
-									</p>
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-
+      
+      <DishList restaurant={restaurant} />
+      
 			<Footer />
 		</div>
 	);

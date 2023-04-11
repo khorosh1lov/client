@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 import { API_BASE_URL } from '../../config';
 import Footer from '../Footer/Footer';
@@ -7,18 +7,22 @@ import Skeleton from './Skeleton/Skeleton';
 import SortRestaurants from './SortRestaurants';
 import StarRating from './StarRating';
 import axios from 'axios';
+import { useCart } from '../withCart';
 
 const Restaurants = () => {
-	const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 	const [restaurants, setRestaurants] = useState([]);
 	const [sortType, setSortType] = useState('');
 	const [sortOrder, setSortOrder] = useState('asc');
 	const [searchQuery, setSearchQuery] = useState('');
+  const { cartItems, addToCart, removeFromCart, clearCart } = useCart();
 
-	const handleSort = (type, order) => {
-		setSortType(type);
-		setSortOrder(order);
-	};
+
+  const handleSort = (type, order) => {
+    setSortType(type);
+    setSortOrder(order);
+  };
+
 
 	const handleSearch = (e) => {
 		setSearchQuery(e.target.value);
@@ -35,20 +39,20 @@ const Restaurants = () => {
 			}
 		};
 
-		fetchRestaurants();
-	}, []);
+    fetchRestaurants();
+  }, []);
 
-	const sortedRestaurants = restaurants.sort((a, b) => {
-		let comparison = 0;
+  const sortedRestaurants = restaurants.sort((a, b) => {
+    let comparison = 0;
 
-		if (sortType === 'alphabet') {
-			comparison = a.name.localeCompare(b.name);
-		} else if (sortType === 'rating') {
-			comparison = a.rating - b.rating;
-		}
+    if (sortType === "alphabet") {
+      comparison = a.name.localeCompare(b.name);
+    } else if (sortType === "rating") {
+      comparison = a.rating - b.rating;
+    }
 
-		return sortOrder === 'asc' ? comparison : -comparison;
-	});
+    return sortOrder === "asc" ? comparison : -comparison;
+  });
 
 	const filteredRestaurants = sortedRestaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(searchQuery.toLowerCase()));
 

@@ -1,19 +1,22 @@
 import Label from "./Label";
 
-function Input({ label, value, onChange, onBlur, children, ...rest }) {
+function Input({ classes, label, value, onChange, onBlur, children, ...rest }) {
   const handleChange = (e) => {
     onChange(e);
   };
   const handleBlur = (e) => {
-    onBlur(e);
+		if (onBlur) {
+			onBlur(e);
+		}
   };
 
   return (
     <>
-      <div className="col-md-12">
-        <Label htmlFor={label}>{label} </Label>
-        <input
-          {...rest}
+      <div className={classes}>
+        <Label htmlFor={label}>
+          {label}
+        </Label>
+        <input {...rest}
           className="form-control"
           aria-label={label}
           id={label}

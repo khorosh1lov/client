@@ -1,6 +1,6 @@
-import "./styles/App.css";
+import './App.css';
 
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import AddRestaurant from "./components/Admin/AddRestaurant";
 import AdminDashboard from "./components/Admin/AdminDashboard";
@@ -15,7 +15,7 @@ import UserMenuRoute from "./routes/UserMenuRoute";
 import { CartProvider } from "./components/withCart";
 
 function App() {
-  const isAdmin = true; // Add Redux states here
+	const isAdmin = true; // Add Redux states here
 
   return (
     <CartProvider>

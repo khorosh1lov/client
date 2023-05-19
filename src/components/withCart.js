@@ -1,9 +1,20 @@
-import React, { createContext, useContext, useState } from "react";
+import React, {createContext, useContext, useEffect, useState} from "react";
+import Cart from "./Cart/Cart";
+import useLocalStorageCart from "./Cart/useLocalStorageCart";
 
-const CartContext = createContext();
+export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useLocalStorageCart('cartItems', []);
+  const [isOpen, setIsOpen] = useState(false);
+
+
+  const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
+  const openCart = ()=> setIsOpen(true);
+  const closeCart = ()=> setIsOpen(false);
+  function getItemQuantity(id) {
+    return cartItems.find(item => item.id === id)?.quantity || 0
+  }
 
   const addToCart = (newItem) => {
     const existedDishIndex = cartItems.findIndex((item) => {
@@ -20,18 +31,51 @@ const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (itemId) => {
-    setCartItems(cartItems.filter((item) => item.id !== itemId));
-  };
+    setCartItems(cartItems.filter((item, index) => index !== itemId));
+    };
 
   const clearCart = () => {
     setCartItems([]);
   };
+  function increaseItemQuantity(id) {
+    setCartItems(currentItems => {
+      if (currentItems.find((item, index) => index === id) == null) {
+        return [...currentItems, {id, quantity: 1}]
+      } else {
+        return currentItems.map((item, index) => {
+          return index === id ? {...item, quantity: item.quantity + 1} : item;
+        })
+      }
+    })
+  }
+  function decreaseItemQuantity(id) {
+    setCartItems(currentItems => {
+      if (currentItems.find((item, index) => index === id)?.quantity === 1) {
+        return currentItems.filter((item, index) => index !== id)
+      } else {
+        return currentItems.map((item, index) => {
+          return index === id ? {...item, quantity: item.quantity - 1} : item;
+        })
+      }
+    })
+  }
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart }}
+      value={{
+        cartItems,
+        cartQuantity,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        openCart,
+        closeCart,
+        getItemQuantity,
+        increaseItemQuantity,
+        decreaseItemQuantity, }}
     >
       {children}
+      <Cart isOpen={isOpen} />
     </CartContext.Provider>
   );
 };
